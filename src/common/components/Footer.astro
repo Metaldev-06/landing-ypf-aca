@@ -62,12 +62,12 @@ const date = new Date().getFullYear();
 
         <div class="services__container">
           <div>
-            <span>Combustibles</span>
-            <span>Servicompra</span>
+            <a href="/">Combustibles</a>
+            <a href="/">Servicompra</a>
           </div>
 
           <div>
-            <span>Lubricantes</span>
+            <a href="/">Lubricantes</a>
           </div>
         </div>
       </div>
@@ -203,6 +203,14 @@ const date = new Date().getFullYear();
             display: flex;
             flex-direction: column;
             gap: 1rem;
+
+            a {
+              color: $text-footer-color;
+
+              &:hover {
+                text-decoration: underline;
+              }
+            }
           }
         }
       }
@@ -214,6 +222,8 @@ const date = new Date().getFullYear();
       display: flex;
       justify-content: center;
       align-items: center;
+      font-size: 0.9rem;
+      opacity: 0.7;
 
       span {
         font-weight: bold;

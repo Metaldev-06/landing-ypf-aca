@@ -1,22 +1,40 @@
 <article class="separator__container">
   <div id="my-keen-slider" class="keen-slider">
     <div class="keen-slider__slide">
-      <img src="/img/separator-1.jpg" alt="Serviclub" />
+      <a
+        href="https://serviclub.ypf.com/?_ga=2.166453497.654987654.1673280657-1638044193.1672922441"
+        target="_blank"
+      >
+        <img src="/img/separator-1.jpg" alt="Serviclub" />
+      </a>
     </div>
     <div class="keen-slider__slide">
-      <img src="/img/separator-2.jpg" alt="Serviclub" />
+      <a href="https://elaion.com.ar/" target="_blank">
+        <img src="/img/separator-2.jpg" alt="Elaion Auro" />
+      </a>
     </div>
     <div class="keen-slider__slide">
-      <img src="/img/separator-3.jpg" alt="Serviclub" />
+      <a href="https://infinia.com.ar/nafta/motor-interno.html" target="_blank">
+        <img src="/img/separator-3.jpg" alt="Infinia" />
+      </a>
     </div>
     <div class="keen-slider__slide">
-      <img src="/img/separator-4.jpg" alt="Serviclub" />
+      <a href="https://boxes.ypf.com/" target="_blank">
+        <img src="/img/separator-4.jpg" alt="Boxes" />
+      </a>
     </div>
     <div class="keen-slider__slide">
-      <img src="/img/separator-5.jpg" alt="Serviclub" />
+      <a
+        href="https://infinia.com.ar/diesel/Infinia-diesel-el-combustible-de-ultima-tecnologia-de-YPF.html"
+        target="_blank"
+      >
+        <img src="/img/separator-5.jpg" alt="Infinia Diesel" />
+      </a>
     </div>
     <div class="keen-slider__slide">
-      <img src="/img/separator-3.jpg" alt="Serviclub" />
+      <a href="https://infinia.com.ar/nafta/motor-interno.html" target="_blank">
+        <img src="/img/separator-6.jpg" alt="Infinia Nafta" />
+      </a>
     </div>
   </div>
 </article>
@@ -38,10 +56,16 @@
         width: 100%;
         flex-grow: 1;
 
-        img {
-          width: 100%;
-          object-fit: cover;
-          object-position: center;
+        a {
+          img {
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+          }
+
+          &:hover {
+            opacity: 0.5;
+          }
         }
       }
     }
