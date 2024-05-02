@@ -1,0 +1,52 @@
+<section class="hero__section">
+  <article class="hero__container">
+    <img src="/img/hero-image.jpg" alt="Background" />
+
+    <div class="hero__content">
+      <h1>Una parada <br /> Táctica</h1>
+    </div>
+  </article>
+</section>
+
+<style lang="scss">
+  @import "../../styles/_variables.scss";
+
+  .hero__section {
+    width: 100%;
+    height: 100vh;
+    background-color: $black-color;
+
+    .hero__container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: bottom;
+        opacity: 60%;
+        position: absolute;
+        top: 0;
+        user-select: none;
+      }
+
+      .hero__content {
+        width: $full-width;
+        max-width: 1400px;
+        height: 100%;
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: $white-color;
+        display: flex;
+        align-items: center;
+        margin: 0 auto;
+
+        h1 {
+          z-index: 10;
+        }
+      }
+    }
+  }
+</style>

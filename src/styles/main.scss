@@ -1,0 +1,21 @@
+@import "./_normalize.scss", "./_variables.scss", "./_mediaqueries.scss";
+@import "@fontsource-variable/inter";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+    text-transform: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: $white-color;
+    font-family: 'inter', sans-serif;
+}
+

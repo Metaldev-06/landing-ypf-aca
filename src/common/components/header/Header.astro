@@ -1,0 +1,57 @@
+<header class="header__container">
+  <div class="header__content">
+    <picture class="header__logo">
+      <img src="/img/logo-diaz-servicios.svg" alt="Logo Diaz Servicios" />
+    </picture>
+
+    <nav class="header__nav">
+      <a href="/">Inicio</a>
+      <a href="/">Servicompras</a>
+      <a href="/">Promociones</a>
+      <a href="/">Hotel</a>
+      <a href="/">Contacto</a>
+    </nav>
+
+    <picture class="header__logo--secondary">
+      <img src="/img/logo-aca.svg" alt="Logo Automóvil Club Argentino" />
+    </picture>
+  </div>
+</header>
+
+<style lang="scss">
+  @import "../../../styles/_variables.scss";
+
+  .header__container {
+    width: 100%;
+    height: 100px;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+
+    .header__content {
+      width: $full-width;
+      max-width: $max-width;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 auto;
+
+      .header__logo {
+      }
+
+      .header__nav {
+        display: flex;
+        gap: 0.5rem;
+
+        a {
+          padding: 0.5rem;
+          font-weight: bold;
+          color: $white-color;
+        }
+      }
+
+      .header__logo--secondary {
+      }
+    }
+  }
+</style>
