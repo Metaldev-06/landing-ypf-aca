@@ -1,0 +1,74 @@
+<article class="separator__container">
+  <div id="my-keen-slider" class="keen-slider">
+    <div class="keen-slider__slide">
+      <img src="/img/separator-1.jpg" alt="Serviclub" />
+    </div>
+    <div class="keen-slider__slide">
+      <img src="/img/separator-2.jpg" alt="Serviclub" />
+    </div>
+    <div class="keen-slider__slide">
+      <img src="/img/separator-3.jpg" alt="Serviclub" />
+    </div>
+    <div class="keen-slider__slide">
+      <img src="/img/separator-4.jpg" alt="Serviclub" />
+    </div>
+    <div class="keen-slider__slide">
+      <img src="/img/separator-5.jpg" alt="Serviclub" />
+    </div>
+    <div class="keen-slider__slide">
+      <img src="/img/separator-3.jpg" alt="Serviclub" />
+    </div>
+  </div>
+</article>
+
+<style lang="scss">
+  @import "../../styles/_variables.scss";
+
+  .separator__container {
+    width: 100%;
+    // height: 200px;
+    overflow: hidden;
+    background-color: $footer-color;
+
+    .keen-slider {
+      width: 100%;
+      display: flex;
+
+      .keen-slider__slide {
+        width: 100%;
+        flex-grow: 1;
+
+        img {
+          width: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+      }
+    }
+  }
+</style>
+
+<script>
+  import KeenSlider from "keen-slider";
+
+  const animation = { duration: 30000, easing: (t: any) => t };
+
+  const slider = new KeenSlider("#my-keen-slider", {
+    loop: true,
+    slides: {
+      perView: 5,
+      spacing: 0,
+    },
+    renderMode: "precision",
+    drag: false,
+    created(s) {
+      s.moveToIdx(5, true, animation);
+    },
+    updated(s) {
+      s.moveToIdx(s.track.details.abs + 5, true, animation);
+    },
+    animationEnded(s) {
+      s.moveToIdx(s.track.details.abs + 5, true, animation);
+    },
+  });
+</script>

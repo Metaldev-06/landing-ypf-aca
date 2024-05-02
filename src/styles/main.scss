@@ -19,3 +19,10 @@ body {
     font-family: 'inter', sans-serif;
 }
 
+
+
+.container {
+    width: $max-width;
+    max-width: $max-width;
+    margin: 15rem auto;
+}

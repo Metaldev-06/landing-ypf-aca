@@ -1,0 +1,90 @@
+---
+interface ItemCarousel {
+  title: string;
+  description: string;
+  image: string;
+  url: string;
+}
+
+interface Props {
+  data: ItemCarousel[];
+}
+
+const { data } = Astro.props;
+---
+
+<ul class="services__container">
+  {
+    data.map((item) => (
+      <>
+        <li class="services__card">
+          <img src={item.image} alt={item.title} />
+
+          <div class="services__info">
+            <h4>{item.title}</h4>
+            <p>{item.description}</p>
+            <a href={item.url}>Ver más</a>
+          </div>
+        </li>
+      </>
+    ))
+  }
+</ul>
+
+<style lang="scss">
+  @import "../../styles/_variables.scss";
+
+  .services__container {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    .services__card {
+      width: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      border-radius: 8px;
+      background-color: $white-color-secondary;
+      flex-grow: 1;
+
+      img {
+        width: 100%;
+        border-radius: 4px;
+      }
+
+      .services__info {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 1rem;
+
+        h4 {
+          font-size: 1.5rem;
+          font-weight: 600;
+        }
+
+        p {
+          text-wrap: pretty;
+        }
+
+        a {
+          width: 120px;
+          height: 40px;
+          margin: 0 auto;
+          background-color: $yellow-color;
+          color: $white-color-secondary;
+          font-weight: bold;
+          text-align: center;
+          line-height: 40px;
+          border-radius: 4px;
+        }
+      }
+    }
+  }
+</style>

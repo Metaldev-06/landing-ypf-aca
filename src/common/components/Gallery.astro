@@ -1,0 +1,85 @@
+<article class="gallery__container">
+  <div class="row">
+    <img
+      src="/img/product-2.jpg"
+      alt="Imagenes de la estación"
+      width="544"
+      class="secondary"
+    />
+    <img
+      src="/img/product-1.jpg"
+      alt="Imagenes de la estación"
+      width="653"
+      class="primary"
+    />
+    <img
+      src="/img/product-3.jpg"
+      alt="Imagenes de la estación"
+      width="544"
+      class="secondary"
+    />
+  </div>
+  <div class="row">
+    <img
+      src="/img/product-1.jpg"
+      alt="Imagenes de la estación"
+      width="544"
+      class="secondary"
+    />
+    <img
+      src="/img/product-3.jpg"
+      alt="Imagenes de la estación"
+      width="653"
+      class="primary"
+    />
+    <img
+      src="/img/product-2.jpg"
+      alt="Imagenes de la estación"
+      width="544"
+      class="secondary"
+    />
+  </div>
+</article>
+
+<style lang="scss">
+  .gallery__container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    .row {
+      .primary {
+        width: 100%;
+        max-width: 500px;
+      }
+      .secondary {
+        width: 100%;
+        max-width: 400px;
+      }
+
+      img {
+        width: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+        aspect-ratio: 16 / 9;
+        flex-grow: 1;
+      }
+    }
+
+    .row:nth-child(1) {
+      padding-right: 1rem;
+    }
+
+    .row:nth-child(2) {
+      padding-left: 1rem;
+      // align-self: flex-end;
+    }
+  }
+</style>

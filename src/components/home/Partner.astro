@@ -1,4 +1,32 @@
-<section class="partner__section">
+---
+import Services from "../../common/components/Services.astro";
+
+const dataServices = [
+  {
+    title: "Auxilio Mecánico",
+    description:
+      "Recorré el día con la tranquilidad de saber que estamos donde y cuando nos necesites.",
+    image: "/img/service-1.jpg",
+    url: "/",
+  },
+  {
+    title: "Seguro Automotor",
+    description:
+      "La protección que vos y tu automóvil necesitan. Te ofrecemos las mejores coberturas y beneficios.",
+    image: "/img/service-2.jpg",
+    url: "/",
+  },
+  {
+    title: "Descuento en Combustibles",
+    description:
+      "Todo el año y con cualquier modalidad de pago en las estaciones adheridas.",
+    image: "/img/service-3.jpg",
+    url: "/",
+  },
+];
+---
+
+<section class="partner__section container">
   <div class="title__container">
     <h2>¿Todavía no sos socio?</h2>
     <div class="separator"></div>
@@ -6,65 +34,7 @@
   </div>
 
   <article class="carousel__container">
-    <div class="glide">
-      <div class="glide__track" data-glide-el="track">
-        <ul class="glide__slides">
-          <li class="glide__slide">
-            <img src="/img/service-1.jpg" alt="Servicio de Grúas" />
-            <div>
-              <h4>Auxilio Mecánico</h4>
-              <p>
-                Recorré el país con la tranquilidad de saber que estamos dónde y
-                cuándo nos necesites.
-              </p>
-              <a href="/">Ver más</a>
-            </div>
-          </li>
-          <li class="glide__slide">
-            <img src="/img/service-2.jpg" alt="Servicio de Grúas" />
-            <div>
-              <h4>Seguro Automotor</h4>
-              <p>
-                La protección que vos y tu automóvil necesitan. Te ofrecemos las
-                mejores coberturas y beneficios.
-              </p>
-              <a href="/">Ver más</a>
-            </div>
-          </li>
-          <li class="glide__slide">
-            <img src="/img/service-3.jpg" alt="Servicio de Grúas" />
-            <div>
-              <h4>Descuento en Combustibles</h4>
-              <p>
-                Todo el año y con cualquier modalidad de pago en las estaciones
-                adheridas.
-              </p>
-              <a href="/">Ver más</a>
-            </div>
-          </li>
-          <li class="glide__slide">
-            <img src="/img/service-3.jpg" alt="Servicio de Grúas" />
-            <div>
-              <h4>Descuento en Combustibles</h4>
-              <p>
-                Todo el año y con cualquier modalidad de pago en las estaciones
-                adheridas.
-              </p>
-              <a href="/">Ver más</a>
-            </div>
-          </li>
-        </ul>
-      </div>
-
-      <div class="glide__arrows" data-glide-el="controls[nav]">
-        <button class="glide__arrow glide__arrow--left" data-glide-dir="<"
-          >prev</button
-        >
-        <button class="glide__arrow glide__arrow--right" data-glide-dir=">"
-          >next</button
-        >
-      </div>
-    </div>
+    <Services data={dataServices} />
   </article>
 </section>
 
@@ -73,7 +43,6 @@
 
   .partner__section {
     width: 100%;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -107,53 +76,9 @@
     }
 
     .carousel__container {
-      width: 100%;
+      width: $full-width;
       max-width: $max-width;
       margin: 0 auto;
-      overflow: hidden;
-      padding: 1rem;
-
-      .glide__slides {
-        width: 100%;
-        max-width: 600px;
-        margin: 0 auto;
-        display: flex;
-
-        .glide__slide {
-          width: 100%;
-          min-width: 400px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          gap: 1rem;
-          padding: 1rem;
-          border-radius: 8px;
-          background-color: $white-color-secondary;
-
-          img {
-            width: 100%;
-          }
-        }
-      }
     }
   }
 </style>
-
-<script>
-  import Glide, {
-    Controls,
-    Breakpoints,
-  } from "@glidejs/glide/dist/glide.modular.esm";
-
-  new Glide(".glide", {
-    type: "carousel",
-    perView: 3,
-    breakpoints: {
-      600: { perView: 1 },
-      900: { perView: 2 },
-      1200: { perView: 3 },
-    },
-    gap: 10,
-  }).mount({ Controls, Breakpoints });
-</script>
