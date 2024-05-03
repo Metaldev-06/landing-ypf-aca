@@ -1,15 +1,22 @@
-<header class="header__container">
+---
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1);
+---
+
+<header class="header__container" transition:persist>
   <div class="header__content">
     <picture class="header__logo">
       <img src="/img/logo-diaz-servicios.svg" alt="Logo Diaz Servicios" />
     </picture>
 
     <nav class="header__nav">
-      <a href="/">Inicio</a>
-      <a href="/">Servicompras</a>
-      <a href="/">Promociones</a>
-      <a href="/">Hotel</a>
-      <a href="/">Contacto</a>
+      <a href="/" class={currentPath === "" ? "active" : ""}>Inicio</a>
+      <a href="/menu" class={currentPath === "menu" ? "active" : ""}>Menú</a>
+      <!-- <a href="/" class={''}>Promociones</a> -->
+      <a href="/hotel" class={currentPath === "hotel" ? "active" : ""}>Hotel</a>
+      <a href="/contact" class={currentPath === "contact" ? "active" : ""}
+        >Contacto</a
+      >
     </nav>
 
     <picture class="header__logo--secondary">
@@ -51,6 +58,45 @@
           padding: 0.5rem;
           font-weight: bold;
           color: $white-color;
+          opacity: 0.8;
+
+          & {
+            cursor: pointer;
+            position: relative;
+            border: none;
+            background: none;
+            transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition-duration: 400ms;
+            transition-property: color;
+          }
+          &:focus,
+          &:hover {
+            color: $white-color-secondary;
+            opacity: 1;
+          }
+
+          &:focus:after,
+          &:hover:after {
+            width: 100%;
+            left: 0%;
+          }
+          &:after {
+            content: "";
+            pointer-events: none;
+            bottom: -2px;
+            left: 50%;
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            background: $white-color;
+            transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+            transition-duration: 400ms;
+            transition-property: width, left;
+          }
+        }
+
+        .active {
+          opacity: 1;
         }
       }
 
@@ -62,7 +108,6 @@
   .header-sticky {
     position: fixed;
     background-color: $black-color;
-    border-radius: 8px;
   }
 </style>
 
@@ -73,10 +118,8 @@
 
   let isSticky = false;
 
-  window.addEventListener("scroll", () => {
+  const activedFixedScroll = () => {
     const scrollY = window.scrollY;
-
-    console.log(scrollY);
 
     if (!header) return;
 
@@ -87,5 +130,7 @@
       header.classList.remove("header-sticky");
       isSticky = false;
     }
-  });
+  };
+
+  window.addEventListener("scroll", activedFixedScroll);
 </script>

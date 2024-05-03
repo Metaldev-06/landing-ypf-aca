@@ -81,6 +81,7 @@ const date = new Date().getFullYear();
 
 <style lang="scss">
   @import "../../styles/_variables.scss";
+  @import "../../styles/_mediaqueries.scss";
 
   .footer__container {
     width: 100%;
@@ -137,7 +138,15 @@ const date = new Date().getFullYear();
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap;
       z-index: 1;
+      gap: 2rem;
+
+      @include media-up(tablet) {
+        justify-content: center;
+        max-width: none;
+        margin: 1rem 0;
+      }
 
       h3 {
         font-size: 1.5rem;
@@ -149,15 +158,30 @@ const date = new Date().getFullYear();
         flex-direction: column;
         gap: 1rem;
 
+        @include media-up(tablet) {
+          align-items: center;
+        }
+
         img {
-          width: 278px;
+          width: 100%;
+          min-width: 200px;
+          max-width: 278px;
           margin-bottom: 2rem;
+
+          @include media-up(mobile) {
+            width: 180px;
+            max-width: none;
+            min-width: none;
+          }
         }
 
         p {
           display: flex;
           align-items: center;
           gap: 0.5rem;
+          @include media-up(tablet) {
+            align-self: flex-start;
+          }
         }
       }
 
@@ -177,6 +201,7 @@ const date = new Date().getFullYear();
             width: 100%;
             display: flex;
             justify-content: space-between;
+            gap: 1rem;
           }
         }
 
@@ -185,6 +210,9 @@ const date = new Date().getFullYear();
           height: 0;
           border: medium none;
           border-top: 1px dashed $text-footer-color;
+          @include media-up(tablet) {
+            width: 100%;
+          }
         }
       }
 
