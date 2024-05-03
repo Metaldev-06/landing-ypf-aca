@@ -1,4 +1,7 @@
 ---
+import { Image } from "astro:assets";
+import logo from "../../../public/img/logo-diaz-servicios.svg";
+
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1);
 ---
@@ -6,7 +9,7 @@ const currentPath = pathname.slice(1);
 <header class="header__container" transition:persist>
   <div class="header__content">
     <picture class="header__logo">
-      <img src="/img/logo-diaz-servicios.svg" alt="Logo Diaz Servicios" />
+      <Image src={logo} alt="Logo Diaz Servicios" loading="eager" />
     </picture>
 
     <nav class="header__nav">
