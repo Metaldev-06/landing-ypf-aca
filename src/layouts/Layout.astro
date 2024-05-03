@@ -1,10 +1,13 @@
 ---
 import ViewTransitions from "astro/components/ViewTransitions.astro";
+import { SEO } from "astro-seo";
+
 import Header from "../common/components/Header.astro";
 import "../styles/main.scss";
 
 import "@fontsource-variable/inter";
 import Footer from "../common/components/Footer.astro";
+import { seoAstro } from "../common/SEO/seo";
 
 // import "@fontsource/inter";
 
@@ -16,14 +19,72 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <!-- <meta name="description" content="Astro description" /> -->
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <SEO
+      title={title}
+      description={seoAstro.description}
+      openGraph={{
+        basic: {
+          title: `${seoAstro.title}`,
+          type: "A type.",
+          image: `${seoAstro.ogImage}`,
+        },
+      }}
+      twitter={{
+        creator: `${seoAstro.twitterCreator}`,
+      }}
+      canonical={`${seoAstro.canonical}`}
+      extend={{
+        link: [
+          { rel: "icon", href: "/img/iconified/favicon.ico" },
+          { rel: "apple-touch-icon", href: "/img/apple-touch-icon.png" },
+          {
+            rel: "apple-touch-icon",
+            sizes: "72x72",
+            href: "/img/iconified/apple-touch-icon-72x72.png",
+          },
+          {
+            rel: "apple-touch-icon",
+            sizes: "76x76",
+            href: "/img/iconified/apple-touch-icon-76x76.png",
+          },
+          {
+            rel: "apple-touch-icon",
+            sizes: "114x114",
+            href: "/img/iconified/apple-touch-icon-114x114.png",
+          },
+          {
+            rel: "apple-touch-icon",
+            sizes: "120x120",
+            href: "/img/iconified/apple-touch-icon-120x120.png",
+          },
+          {
+            rel: "apple-touch-icon",
+            sizes: "152x152",
+            href: "/img/iconified/apple-touch-icon-152x152.png",
+          },
+          {
+            rel: "apple-touch-icon",
+            sizes: "180x180",
+            href: "/img/iconified/apple-touch-icon-180x180.png",
+          },
+        ],
+        meta: [
+          {
+            name: "twitter:image",
+            content: `${seoAstro.ogImage}`,
+          },
+          { name: "twitter:title", content: `${seoAstro.title}` },
+          { name: "twitter:description", content: `${seoAstro.description}` },
+        ],
+      }}
+    />
     <ViewTransitions />
   </head>
   <body>
