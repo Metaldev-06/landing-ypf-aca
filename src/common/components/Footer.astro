@@ -1,5 +1,8 @@
 ---
 import { Icon } from "astro-icon/components";
+import Image from "astro/components/Image.astro";
+
+import backroundImage from "../../../public/img/background-footer.jpg";
 
 const date = new Date().getFullYear();
 ---
@@ -11,10 +14,13 @@ const date = new Date().getFullYear();
       alt="Footer Image"
       class="footer__image"
     />
+
+    <Image src={backroundImage} alt="Footer Image" class="footer__image" />
+
     <div class="footer__gradient"></div>
     <div class="footer__info">
       <div class="footer__contact">
-        <img src="/img/logo-ypf.svg" alt="Logo YPF" />
+        <img src="/img/logo-ypf.svg" alt="Logo YPF" loading="lazy" />
 
         <p>
           <Icon name="icon-pin" size={24} />

@@ -1,3 +1,11 @@
+---
+import Image from "astro/components/Image.astro";
+
+import imageBanner from "../../../public/img/banner-person.png";
+import playstoreLogo from "../../../public/img/playstore-icon.png";
+import applestoreLogo from "../../../public/img/applestore-icon.png";
+---
+
 <section class="banner__section">
   <article class="banner__container">
     <div class="banner__info">
@@ -10,21 +18,26 @@
           href="https://play.google.com/store/apps/details?id=com.ypf.jpm"
           target="_blank"
         >
-          <img src="/img/playstore-icon.png" alt="" />
+          <Image src={playstoreLogo} alt="Playstore logo" loading="lazy" />
           Play Store
         </a>
         <a
           href="https://apps.apple.com/ar/app/ypf-app/id1401504810"
           target="_blank"
         >
-          <img src="/img/applestore-icon.png" alt="" />
+          <Image src={applestoreLogo} alt="Appstore logo" loading="lazy" />
           App Store
         </a>
       </div>
     </div>
 
     <picture class="banner__image">
-      <img src="/img/banner-person.png" alt="Banner" />
+      <Image
+        src={imageBanner}
+        class="banner__image"
+        alt="Banner"
+        loading="lazy"
+      />
     </picture>
   </article>
 </section>

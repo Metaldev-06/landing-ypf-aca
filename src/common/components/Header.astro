@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import logo from "../../../public/img/logo-diaz-servicios.svg";
+import logoACA from "../../../public/img/logo-aca.svg";
 
 const pathname = new URL(Astro.request.url).pathname;
 const currentPath = pathname.slice(1);
@@ -23,7 +24,11 @@ const currentPath = pathname.slice(1);
     </nav>
 
     <picture class="header__logo--secondary">
-      <img src="/img/logo-aca.svg" alt="Logo Automóvil Club Argentino" />
+      <Image
+        src={logoACA}
+        alt="Logo Automóvil Club Argentino"
+        loading="eager"
+      />
     </picture>
   </div>
 </header>

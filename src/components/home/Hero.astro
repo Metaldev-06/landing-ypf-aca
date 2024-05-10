@@ -1,6 +1,16 @@
+---
+import Image from "astro/components/Image.astro";
+import imageHero from "../../../public/img/hero-image.jpg";
+---
+
 <section class="hero__section">
   <article class="hero__container">
-    <img src="/img/hero-image.jpg" alt="Background" />
+    <Image
+      src={imageHero}
+      alt="Hero Imagen"
+      class="hero__image"
+      loading="eager"
+    />
 
     <div class="hero__content">
       <h1>Una parada <br /> Táctica</h1>
@@ -21,7 +31,7 @@
       height: 100%;
       position: relative;
 
-      img {
+      .hero__image {
         width: 100%;
         height: 100%;
         object-fit: cover;

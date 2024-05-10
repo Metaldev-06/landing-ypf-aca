@@ -1,24 +1,61 @@
+---
+import Image from "astro/components/Image.astro";
+import image1 from "../../../public/img/product-1.jpg";
+import image2 from "../../../public/img/product-2.jpg";
+import image3 from "../../../public/img/product-3.jpg";
+---
+
 <article class="gallery__container">
   <div class="row">
     <div class="secondary">
-      <img src="/img/product-2.jpg" alt="Imagenes de la estación" width="544" />
+      <Image
+        src={image2}
+        alt="Imagenes de la estación"
+        width="544"
+        loading="lazy"
+      />
     </div>
     <div class="primary">
-      <img src="/img/product-1.jpg" alt="Imagenes de la estación" width="653" />
+      <Image
+        src={image1}
+        alt="Imagenes de la estación"
+        width="653"
+        loading="lazy"
+      />
     </div>
     <div class="secondary">
-      <img src="/img/product-3.jpg" alt="Imagenes de la estación" width="544" />
+      <Image
+        src={image3}
+        alt="Imagenes de la estación"
+        width="544"
+        loading="lazy"
+      />
     </div>
   </div>
   <div class="row">
     <div class="secondary">
-      <img src="/img/product-1.jpg" alt="Imagenes de la estación" width="544" />
+      <Image
+        src={image1}
+        alt="Imagenes de la estación"
+        width="544"
+        loading="lazy"
+      />
     </div>
     <div class="primary">
-      <img src="/img/product-3.jpg" alt="Imagenes de la estación" width="653" />
+      <Image
+        src={image3}
+        alt="Imagenes de la estación"
+        width="653"
+        loading="lazy"
+      />
     </div>
     <div class="secondary">
-      <img src="/img/product-2.jpg" alt="Imagenes de la estación" width="544" />
+      <Image
+        src={image2}
+        alt="Imagenes de la estación"
+        width="544"
+        loading="lazy"
+      />
     </div>
   </div>
 </article>
@@ -58,10 +95,10 @@
 
       img {
         width: 100%;
+        height: auto;
         object-fit: cover;
         border-radius: 8px;
         aspect-ratio: 16 / 9;
-        flex-grow: 1;
         transition: transform 0.7s ease-in-out;
 
         &:hover {

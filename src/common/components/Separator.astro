@@ -1,3 +1,14 @@
+---
+import Image from "astro/components/Image.astro";
+
+import image1 from "../../../public/img/separator-1.jpg";
+import image2 from "../../../public/img/separator-2.jpg";
+import image3 from "../../../public/img/separator-3.jpg";
+import image4 from "../../../public/img/separator-4.jpg";
+import image5 from "../../../public/img/separator-5.jpg";
+import image6 from "../../../public/img/separator-6.jpg";
+---
+
 <article class="separator__container">
   <div id="my-keen-slider" class="keen-slider">
     <div class="keen-slider__slide">
@@ -5,22 +16,22 @@
         href="https://serviclub.ypf.com/?_ga=2.166453497.654987654.1673280657-1638044193.1672922441"
         target="_blank"
       >
-        <img src="/img/separator-1.jpg" alt="Serviclub" />
+        <Image src={image1} alt="Serviclub" loading="lazy" />
       </a>
     </div>
     <div class="keen-slider__slide">
       <a href="https://elaion.com.ar/" target="_blank">
-        <img src="/img/separator-2.jpg" alt="Elaion Auro" />
+        <Image src={image2} alt="Elaion Auro" loading="lazy" />
       </a>
     </div>
     <div class="keen-slider__slide">
       <a href="https://infinia.com.ar/nafta/motor-interno.html" target="_blank">
-        <img src="/img/separator-3.jpg" alt="Infinia" />
+        <Image src={image3} alt="Infinia Nafta" loading="lazy" />
       </a>
     </div>
     <div class="keen-slider__slide">
       <a href="https://boxes.ypf.com/" target="_blank">
-        <img src="/img/separator-4.jpg" alt="Boxes" />
+        <Image src={image4} alt="Boxes" loading="lazy" />
       </a>
     </div>
     <div class="keen-slider__slide">
@@ -28,12 +39,12 @@
         href="https://infinia.com.ar/diesel/Infinia-diesel-el-combustible-de-ultima-tecnologia-de-YPF.html"
         target="_blank"
       >
-        <img src="/img/separator-5.jpg" alt="Infinia Diesel" />
+        <Image src={image5} alt="Infinia Diesel" loading="lazy" />
       </a>
     </div>
     <div class="keen-slider__slide">
       <a href="https://infinia.com.ar/nafta/motor-interno.html" target="_blank">
-        <img src="/img/separator-6.jpg" alt="Infinia Nafta" />
+        <Image src={image6} alt="Infinia Nafta" loading="lazy" />
       </a>
     </div>
   </div>
@@ -59,6 +70,7 @@
         a {
           img {
             width: 100%;
+            height: auto;
             object-fit: cover;
             object-position: center;
           }

@@ -18,7 +18,7 @@ const { data } = Astro.props;
     data.map((item) => (
       <>
         <li class="services__card">
-          <img src={item.image} alt={item.title} width="354" />
+          <img src={item.image} alt={item.title} width="354" loading="lazy" />
 
           <div class="services__info">
             <h4>{item.title}</h4>
