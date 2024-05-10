@@ -19,7 +19,7 @@ import imageHero from "../../../public/img/hero-image.jpg";
 </section>
 
 <style lang="scss">
-  @import "../../styles/_variables.scss";
+  @import "../../styles/_variables.scss", "../../styles/_mediaqueries.scss";
 
   .hero__section {
     width: 100%;
@@ -52,6 +52,13 @@ import imageHero from "../../../public/img/hero-image.jpg";
         display: flex;
         align-items: center;
         margin: 0 auto;
+
+        @include media-up(tablet) {
+          font-size: 2rem;
+        }
+        @include media-up(mobile) {
+          font-size: 1.5rem;
+        }
 
         h1 {
           z-index: 10;

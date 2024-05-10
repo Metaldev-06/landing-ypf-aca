@@ -18,9 +18,9 @@ const currentPath = pathname.slice(1);
       <a href="/menu" class={currentPath === "menu" ? "active" : ""}>Menú</a>
       <!-- <a href="/" class={''}>Promociones</a> -->
       <a href="/hotel" class={currentPath === "hotel" ? "active" : ""}>Hotel</a>
-      <a href="/contact" class={currentPath === "contact" ? "active" : ""}
+      <!-- <a href="/contact" class={currentPath === "contact" ? "active" : ""}
         >Contacto</a
-      >
+      > -->
     </nav>
 
     <picture class="header__logo--secondary">
@@ -33,8 +33,37 @@ const currentPath = pathname.slice(1);
   </div>
 </header>
 
+<header class="header__container--mobile">
+  <div class="header__images">
+    <picture class="header__logo">
+      <Image src={logo} alt="Logo Diaz Servicios" loading="eager" width={50} />
+    </picture>
+
+    <picture class="header__logo--secondary">
+      <Image
+        src={logoACA}
+        alt="Logo Automóvil Club Argentino"
+        loading="eager"
+        width={50}
+      />
+    </picture>
+  </div>
+
+  <div class="header__content--mobile">
+    <nav class="header__nav">
+      <a href="/" class={currentPath === "" ? "active" : ""}>Inicio</a>
+      <a href="/menu" class={currentPath === "menu" ? "active" : ""}>Menú</a>
+      <!-- <a href="/" class={''}>Promociones</a> -->
+      <a href="/hotel" class={currentPath === "hotel" ? "active" : ""}>Hotel</a>
+      <!-- <a href="/contact" class={currentPath === "contact" ? "active" : ""}
+        >Contacto</a
+      > -->
+    </nav>
+  </div>
+</header>
+
 <style lang="scss">
-  @import "../../styles/_variables.scss";
+  @import "../../styles/_variables.scss", "../../styles/_mediaqueries.scss";
 
   .header__container {
     width: 100%;
@@ -47,6 +76,10 @@ const currentPath = pathname.slice(1);
     justify-content: center;
     align-items: center;
 
+    @include media-up(mobileXL) {
+      display: none;
+    }
+
     .header__content {
       width: $full-width;
       max-width: $max-width;
@@ -54,62 +87,81 @@ const currentPath = pathname.slice(1);
       justify-content: space-between;
       align-items: center;
       margin: 0 auto;
+    }
+  }
 
-      .header__logo {
+  .header__nav {
+    display: flex;
+    gap: 0.5rem;
+
+    a {
+      padding: 0.5rem;
+      font-weight: bold;
+      color: $white-color;
+      opacity: 0.8;
+
+      & {
+        cursor: pointer;
+        position: relative;
+        border: none;
+        background: none;
+        transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+        transition-duration: 400ms;
+        transition-property: color;
+      }
+      &:focus,
+      &:hover {
+        color: $white-color-secondary;
+        opacity: 1;
       }
 
-      .header__nav {
-        display: flex;
-        gap: 0.5rem;
-
-        a {
-          padding: 0.5rem;
-          font-weight: bold;
-          color: $white-color;
-          opacity: 0.8;
-
-          & {
-            cursor: pointer;
-            position: relative;
-            border: none;
-            background: none;
-            transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
-            transition-duration: 400ms;
-            transition-property: color;
-          }
-          &:focus,
-          &:hover {
-            color: $white-color-secondary;
-            opacity: 1;
-          }
-
-          &:focus:after,
-          &:hover:after {
-            width: 100%;
-            left: 0%;
-          }
-          &:after {
-            content: "";
-            pointer-events: none;
-            bottom: -2px;
-            left: 50%;
-            position: absolute;
-            width: 0%;
-            height: 2px;
-            background: $white-color;
-            transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
-            transition-duration: 400ms;
-            transition-property: width, left;
-          }
-        }
-
-        .active {
-          opacity: 1;
-        }
+      &:focus:after,
+      &:hover:after {
+        width: 100%;
+        left: 0%;
       }
-
-      .header__logo--secondary {
+      &:after {
+        content: "";
+        pointer-events: none;
+        bottom: -2px;
+        left: 50%;
+        position: absolute;
+        width: 0%;
+        height: 2px;
+        background: $white-color;
+        transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+        transition-duration: 400ms;
+        transition-property: width, left;
       }
+    }
+
+    .active {
+      opacity: 1;
+    }
+  }
+
+  .header__container--mobile {
+    display: none;
+    width: 100%;
+    // height: 80px;
+    position: absolute;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+    justify-content: center;
+    align-items: center;
+
+    @include media-up(mobileXL) {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .header__images {
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 

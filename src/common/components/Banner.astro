@@ -32,12 +32,7 @@ import applestoreLogo from "../../../public/img/applestore-icon.png";
     </div>
 
     <picture class="banner__image">
-      <Image
-        src={imageBanner}
-        class="banner__image"
-        alt="Banner"
-        loading="lazy"
-      />
+      <Image src={imageBanner} alt="Banner" loading="lazy" />
     </picture>
   </article>
 </section>
@@ -95,6 +90,7 @@ import applestoreLogo from "../../../public/img/applestore-icon.png";
 
         @include media-up(ipad) {
           max-width: none;
+          text-align: center;
         }
 
         h2 {
@@ -106,6 +102,10 @@ import applestoreLogo from "../../../public/img/applestore-icon.png";
           display: flex;
           justify-content: flex-start;
           gap: 1rem;
+
+          @include media-up(ipad) {
+            justify-content: center;
+          }
 
           a {
             background-color: $white-color;
@@ -133,6 +133,7 @@ import applestoreLogo from "../../../public/img/applestore-icon.png";
 
         img {
           width: 100%;
+          object-fit: contain;
         }
       }
     }
