@@ -1,0 +1,119 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<article class="checkin__container">
+  <div class="checkin__content">
+    <div class="icon__container">
+      <Icon name="icon-calendar" size={24} />
+    </div>
+    <div>
+      <h2>Ingreso</h2>
+
+      <input type="date" name="" id="" />
+    </div>
+  </div>
+
+  <div class="checkout__content">
+    <div class="icon__container">
+      <Icon name="icon-calendar" size={24} />
+    </div>
+    <div>
+      <h2>Salida</h2>
+      <input type="date" name="" id="" />
+    </div>
+  </div>
+
+  <div class="person__content">
+    <div class="icon__container">
+      <Icon name="icon-person" size={24} />
+    </div>
+    <div>
+      <h2>Personas</h2>
+      <select name="person" id="person">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+      </select>
+    </div>
+  </div>
+  <div class="button__container">
+    <button>Buscar</button>
+  </div>
+</article>
+
+<style lang="scss">
+  @import "../../styles/_variables.scss", "../../styles/_mediaqueries.scss";
+
+  .checkin__container {
+    width: $full-width;
+    max-width: $max-width;
+    min-height: 150px;
+    margin-inline: auto;
+    margin-top: -5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $white-color-secondary;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    gap: 1rem;
+    padding: 1rem;
+    flex-wrap: wrap;
+
+    .checkin__content,
+    .checkout__content,
+    .person__content,
+    .button__container {
+      flex-grow: 1;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .checkin__content,
+    .checkout__content {
+      input {
+        width: 100%;
+        padding: 0.5rem 1rem 0.5rem 0rem;
+        border: none;
+        outline: none;
+      }
+    }
+
+    .person__content {
+      select {
+        padding: 0.5rem 1rem 0.5rem 0rem;
+        border: none;
+        background-color: transparent;
+        outline: none;
+        cursor: pointer;
+      }
+    }
+
+    .button__container {
+      button {
+        border: 1px solid $black-color;
+        padding: 1rem 2.5rem;
+        border-radius: 4px;
+        font-weight: bold;
+        cursor: pointer;
+        background-color: transparent;
+        transition: all 0.3s;
+
+        &:hover {
+          background-color: $black-color;
+          color: $white-color-secondary;
+        }
+
+        &:active {
+          transform: scale(0.95);
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+</style>

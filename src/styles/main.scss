@@ -1,6 +1,14 @@
 @import "./_normalize.scss", "./_variables.scss", "./_mediaqueries.scss";
 @import "@fontsource-variable/inter";
 
+@font-face {
+  font-family: "Full";
+  src: url("/fonts/Full.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 * {
   margin: 0;
   padding: 0;

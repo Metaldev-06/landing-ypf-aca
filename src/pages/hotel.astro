@@ -1,13 +1,56 @@
 ---
+import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
+import Checkin from "../components/hotel/Checkin.astro";
 ---
 
 <Layout title="Hotel">
-  <section></section>
+  <section class="hotel__container">
+    <div class="image__container">
+      <img src="/img/hotel-background.jpg" alt="Hotel" />
+      <h1>Siéntase como en casa en <span>nuestro Hotel</span></h1>
+    </div>
+
+    <Checkin />
+  </section>
 </Layout>
 
-<style>
-  section {
-    height: 100vh;
+<style lang="scss">
+  @import "../styles/_variables.scss", "../styles/_mediaqueries.scss";
+  .hotel__container {
+    .image__container {
+      width: 100%;
+      height: 75vh;
+      background-color: $black-color;
+      z-index: -1;
+      position: relative;
+
+      h1 {
+        font-size: clamp(1.5rem, 5vw, 4rem);
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        align-content: center;
+        text-align: center;
+        color: $white-color-secondary;
+
+        span {
+          display: block;
+        }
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-position: center;
+        object-fit: cover;
+        opacity: 0.5;
+        filter: blur(5px);
+      }
+    }
   }
 </style>

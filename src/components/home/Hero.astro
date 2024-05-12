@@ -46,19 +46,12 @@ import imageHero from "../../../public/img/hero-image.jpg";
         width: $full-width;
         max-width: 1400px;
         height: 100%;
-        font-size: 2.5rem;
         font-weight: bold;
         color: $white-color;
         display: flex;
         align-items: center;
         margin: 0 auto;
-
-        @include media-up(tablet) {
-          font-size: 2rem;
-        }
-        @include media-up(mobile) {
-          font-size: 1.5rem;
-        }
+        font-size: clamp(1.5rem, 5vw, 2.5rem);
 
         h1 {
           z-index: 10;

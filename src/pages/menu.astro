@@ -63,6 +63,9 @@ import Layout from "../layouts/Layout.astro";
         </div>
       </div>
     </article>
+
+    <img class="pattern pattern-1" src="/img/back-5.webp" alt="Patron" />
+    <img class="pattern pattern-2" src="/img/back-5.webp" alt="Patron" />
   </section>
 </Layout>
 
@@ -76,6 +79,7 @@ import Layout from "../layouts/Layout.astro";
     background-repeat: no-repeat;
     overflow: hidden;
     padding-top: 2rem;
+    position: relative;
 
     .menu__container {
       width: $full-width;
@@ -84,6 +88,8 @@ import Layout from "../layouts/Layout.astro";
       //   height: 100vh;
       display: flex;
       gap: 1rem;
+      z-index: 10;
+      position: relative;
 
       .image__container {
         width: 100%;
@@ -103,6 +109,7 @@ import Layout from "../layouts/Layout.astro";
         img {
           width: 100%;
           scale: 1.5;
+          z-index: 10;
         }
       }
 
@@ -115,6 +122,7 @@ import Layout from "../layouts/Layout.astro";
         text-align: center;
         transition: all 1.5s ease;
         opacity: 0;
+        font-family: "Full", sans-serif;
 
         h2 {
           font-size: 2rem;
@@ -156,6 +164,26 @@ import Layout from "../layouts/Layout.astro";
           }
         }
       }
+    }
+
+    .pattern {
+      position: absolute;
+      z-index: 1;
+      opacity: 0.2;
+
+      @include media-up(mobileXL) {
+        width: 100%;
+      }
+    }
+
+    .pattern-1 {
+      top: 0;
+      right: 0;
+    }
+    .pattern-2 {
+      bottom: 0;
+      left: 0;
+      rotate: 180deg;
     }
   }
 
