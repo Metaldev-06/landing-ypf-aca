@@ -144,7 +144,7 @@ const currentPath = pathname.slice(1);
     display: none;
     width: 100%;
     // height: 80px;
-    position: absolute;
+    position: fixed;
     top: 0;
     z-index: 1000;
     transition: background-color 0.3s ease;
@@ -174,19 +174,22 @@ const currentPath = pathname.slice(1);
   const $ = (selector: string) => document.querySelector(selector);
 
   const header = $(".header__container");
+  const headerMobile = $(".header__container--mobile");
 
   let isSticky = false;
 
   const activedFixedScroll = () => {
     const scrollY = window.scrollY;
 
-    if (!header) return;
+    if (!header || !headerMobile) return;
 
     if (scrollY > 0 && !isSticky) {
       header.classList.add("header-sticky");
+      headerMobile.classList.add("header-sticky");
       isSticky = true;
     } else if (scrollY === 0 && isSticky) {
       header.classList.remove("header-sticky");
+      headerMobile.classList.remove("header-sticky");
       isSticky = false;
     }
   };
