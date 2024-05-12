@@ -33,7 +33,7 @@ const currentPath = pathname.slice(1);
   </div>
 </header>
 
-<header class="header__container--mobile">
+<header class="header__container--mobile" transition:persist>
   <div class="header__images">
     <picture class="header__logo">
       <Image src={logo} alt="Logo Diaz Servicios" loading="eager" width={50} />
@@ -143,13 +143,14 @@ const currentPath = pathname.slice(1);
   .header__container--mobile {
     display: none;
     width: 100%;
-    // height: 80px;
+    // height: 100px;
     position: fixed;
     top: 0;
     z-index: 1000;
     transition: background-color 0.3s ease;
     justify-content: center;
     align-items: center;
+    padding-bottom: 0.5rem;
 
     @include media-up(mobileXL) {
       display: flex;
