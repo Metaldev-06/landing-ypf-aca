@@ -67,7 +67,7 @@ import Layout from "../layouts/Layout.astro";
 </Layout>
 
 <style lang="scss">
-  @import "../styles/_variables.scss";
+  @import "../styles/_variables.scss", "../styles/_mediaqueries.scss";
 
   .menu__section {
     background-color: #8d4b37;
@@ -94,6 +94,12 @@ import Layout from "../layouts/Layout.astro";
         filter: blur(5px);
         transition: all 1s ease;
 
+        @include media-up(mobileXL) {
+          display: flex;
+          align-items: flex-end;
+          justify-content: flex-end;
+        }
+
         img {
           width: 100%;
           scale: 1.5;
@@ -109,6 +115,7 @@ import Layout from "../layouts/Layout.astro";
         text-align: center;
         transition: all 1.5s ease;
         opacity: 0;
+
         h2 {
           font-size: 2rem;
         }
