@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Menú">
-  <section class="menu__section" transition:persist>
+  <section class="menu__section">
     <article class="menu__container">
       <div class="image__container">
         <img src="/img/cafe-1.webp" alt="Café con Leche" loading="eager" />
@@ -160,42 +160,31 @@ import Layout from "../layouts/Layout.astro";
 </style>
 
 <script>
-  console.log("HOLAAAAAAAAAAA");
-  const $ = (selector: string) => document.querySelectorAll(selector);
+  let observer: IntersectionObserver | null = null;
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      //   console.log(entry);
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-        entry.target.nextElementSibling!.classList.add("show");
-      }
-      //   else {
-      //     entry.target.classList.remove("show");
-      //   }
-    });
-  });
+  const setupIntersectionObserver = () => {
+    if (observer) {
+      observer.disconnect(); // Desconecta el IntersectionObserver si ya está configurado
+    }
 
-  const hiddenElements = $(".image__container");
+    const handleIntersection = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          entry.target.nextElementSibling!.classList.add("show");
+        }
+      });
+    };
 
-  const showElements = () => {
+    const hiddenElements = document.querySelectorAll(".image__container");
+
+    observer = new IntersectionObserver(handleIntersection);
+
     hiddenElements.forEach((el, index) => {
       el.classList.add(index % 2 === 0 ? "left" : "right");
-      observer.observe(el);
+      observer!.observe(el);
     });
   };
 
-  document.addEventListener("DOMContentLoaded", showElements);
-  document.addEventListener("astro:page-load", showElements);
-  document.addEventListener("astro:before-swap", showElements);
-
-  document.addEventListener("astro:before-preparation", () => {
-    console.log("astro:before-preparation");
-    observer.disconnect(); // Desconectar el observer al navegar
-  });
-
-  document.addEventListener("astro:after-swap", () => {
-    console.log("astro:after-swap");
-    showElements();
-  });
+  document.addEventListener("astro:page-load", setupIntersectionObserver);
 </script>
