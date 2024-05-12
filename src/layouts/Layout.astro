@@ -85,10 +85,10 @@ const { title } = Astro.props;
         ],
       }}
     />
-    <ViewTransitions />
+    <!-- <ViewTransitions /> -->
   </head>
   <body>
-    <Header />
+    <Header transition:persist />
     <slot />
     <Footer />
     <style is:global lang="scss"></style>

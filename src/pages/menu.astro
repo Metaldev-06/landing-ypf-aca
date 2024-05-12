@@ -2,4 +2,200 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Menú" />
+<Layout title="Menú">
+  <section class="menu__section" transition:persist>
+    <article class="menu__container">
+      <div class="image__container">
+        <img src="/img/cafe-1.webp" alt="Café con Leche" loading="eager" />
+      </div>
+      <div class="menu__text">
+        <h2>Café con Leche</h2>
+        <div class="detail">
+          <img src="/img/arrow-1.webp" alt="Arrow" />
+        </div>
+      </div>
+    </article>
+
+    <article class="menu__container">
+      <div class="image__container">
+        <img src="/img/cafe-2.webp" alt="Pocillo" loading="eager" />
+      </div>
+      <div class="menu__text">
+        <h2>Café pocillo chico</h2>
+        <div class="detail">
+          <img src="/img/arrow-2.webp" alt="Arrow" />
+        </div>
+      </div>
+    </article>
+
+    <article class="menu__container">
+      <div class="image__container">
+        <img src="/img/cafe-3.webp" alt="Cortado" loading="lazy" />
+      </div>
+      <div class="menu__text">
+        <h2>Café Cortado</h2>
+        <div class="detail">
+          <img src="/img/arrow-1.webp" alt="Arrow" />
+        </div>
+      </div>
+    </article>
+
+    <article class="menu__container">
+      <div class="image__container">
+        <img src="/img/cafe-4.webp" alt="Café Grande" loading="lazy" />
+      </div>
+      <div class="menu__text">
+        <h2>Café Grande</h2>
+        <div class="detail">
+          <img src="/img/arrow-2.webp" alt="Arrow" />
+        </div>
+      </div>
+    </article>
+
+    <article class="menu__container">
+      <div class="image__container">
+        <img src="/img/cafe-10.webp" alt="Para llevar" loading="lazy" />
+      </div>
+      <div class="menu__text">
+        <h2>Para llevar</h2>
+        <div class="detail">
+          <img src="/img/arrow-1.webp" alt="Arrow" />
+        </div>
+      </div>
+    </article>
+  </section>
+</Layout>
+
+<style lang="scss">
+  @import "../styles/_variables.scss";
+
+  .menu__section {
+    background-color: #8d4b37;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    padding-top: 2rem;
+
+    .menu__container {
+      width: $full-width;
+      max-width: $max-width;
+      margin: 6rem auto;
+      //   height: 100vh;
+      display: flex;
+      gap: 1rem;
+
+      .image__container {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        overflow: hidden;
+        opacity: 0;
+        filter: blur(5px);
+        transition: all 1s ease;
+
+        img {
+          width: 100%;
+          scale: 1.5;
+        }
+      }
+
+      .menu__text {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 5rem;
+        color: $white-color-secondary;
+        text-align: center;
+        transition: all 1.5s ease;
+        opacity: 0;
+        h2 {
+          font-size: 2rem;
+        }
+        .detail {
+          transform: rotate(70deg);
+          align-self: flex-start;
+        }
+      }
+
+      .left {
+        transform: translateX(-100%);
+      }
+
+      .right {
+        transform: translateX(100%);
+      }
+
+      .show {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateX(0);
+      }
+
+      &:nth-child(even) {
+        .menu__text {
+          .detail {
+          }
+        }
+      }
+
+      &:nth-child(even) {
+        flex-direction: row-reverse;
+
+        .menu__text {
+          .detail {
+            transform: rotate(7-70deg);
+            align-self: flex-end;
+          }
+        }
+      }
+    }
+  }
+
+  @media (prefers-reduced-motion) {
+    .hidden {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  console.log("HOLAAAAAAAAAAA");
+  const $ = (selector: string) => document.querySelectorAll(selector);
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      //   console.log(entry);
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        entry.target.nextElementSibling!.classList.add("show");
+      }
+      //   else {
+      //     entry.target.classList.remove("show");
+      //   }
+    });
+  });
+
+  const hiddenElements = $(".image__container");
+
+  const showElements = () => {
+    hiddenElements.forEach((el, index) => {
+      el.classList.add(index % 2 === 0 ? "left" : "right");
+      observer.observe(el);
+    });
+  };
+
+  document.addEventListener("DOMContentLoaded", showElements);
+  document.addEventListener("astro:page-load", showElements);
+  document.addEventListener("astro:before-swap", showElements);
+
+  document.addEventListener("astro:before-preparation", () => {
+    console.log("astro:before-preparation");
+    observer.disconnect(); // Desconectar el observer al navegar
+  });
+
+  document.addEventListener("astro:after-swap", () => {
+    console.log("astro:after-swap");
+    showElements();
+  });
+</script>
