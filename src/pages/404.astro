@@ -1,0 +1,38 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="404">
+  <section>
+    <article>
+      <h1>Página no disponible</h1>
+      Disculpe, pero la página a la que quiere acceder no existe.
+    </article>
+  </section>
+</Layout>
+
+<style lang="scss">
+  @import "../styles/_variables.scss";
+
+  section {
+    width: 100%;
+    height: 100vh;
+    background-color: $footer-color;
+
+    article {
+      width: $full-width;
+      max-width: $max-width;
+      height: 100%;
+      margin-inline: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      color: $white-color-secondary;
+
+      h1 {
+        font-size: clamp(1.5rem, 5vw, 3rem);
+      }
+    }
+  }
+</style>

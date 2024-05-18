@@ -87,24 +87,27 @@ import image6 from "../../../public/img/separator-6.jpg";
 <script>
   import KeenSlider from "keen-slider";
 
-  const animation = { duration: 30000, easing: (t: any) => t };
+  const createSlider = () => {
+    const animation = { duration: 30000, easing: (t: any) => t };
 
-  const slider = new KeenSlider("#my-keen-slider", {
-    loop: true,
-    slides: {
-      perView: 5,
-      spacing: 0,
-    },
-    renderMode: "precision",
-    drag: false,
-    created(s) {
-      s.moveToIdx(5, true, animation);
-    },
-    updated(s) {
-      s.moveToIdx(s.track.details.abs + 5, true, animation);
-    },
-    animationEnded(s) {
-      s.moveToIdx(s.track.details.abs + 5, true, animation);
-    },
-  });
+    const slider = new KeenSlider("#my-keen-slider", {
+      loop: true,
+      slides: {
+        perView: 5,
+        spacing: 0,
+      },
+      renderMode: "precision",
+      drag: false,
+      created(s) {
+        s.moveToIdx(5, true, animation);
+      },
+      updated(s) {
+        s.moveToIdx(s.track.details.abs + 5, true, animation);
+      },
+      animationEnded(s) {
+        s.moveToIdx(s.track.details.abs + 5, true, animation);
+      },
+    });
+  };
+  document.addEventListener("astro:page-load", createSlider);
 </script>
