@@ -3,43 +3,59 @@ import { Icon } from "astro-icon/components";
 ---
 
 <article class="checkin__container">
-  <div class="checkin__content">
-    <div class="icon__container">
-      <Icon name="icon-calendar" size={24} />
-    </div>
-    <div>
-      <h2>Ingreso</h2>
+  <form action="POST" id="form">
+    <div class="checkin__content">
+      <div class="icon__container">
+        <Icon name="icon-calendar" size={24} />
+      </div>
+      <div>
+        <h2>Ingreso</h2>
 
-      <input type="date" name="" id="" />
+        <input type="date" name="checkin" id="checkin" required />
+      </div>
     </div>
-  </div>
 
-  <div class="checkout__content">
-    <div class="icon__container">
-      <Icon name="icon-calendar" size={24} />
+    <div class="checkout__content">
+      <div class="icon__container">
+        <Icon name="icon-calendar" size={24} />
+      </div>
+      <div>
+        <h2>Salida</h2>
+        <input type="date" name="checkout" id="checkout" required />
+      </div>
     </div>
-    <div>
-      <h2>Salida</h2>
-      <input type="date" name="" id="" />
-    </div>
-  </div>
 
-  <div class="person__content">
-    <div class="icon__container">
-      <Icon name="icon-person" size={24} />
+    <div class="person__content">
+      <div class="icon__container">
+        <Icon name="icon-person" size={24} />
+      </div>
+      <div>
+        <h2>Personas</h2>
+        <select name="person" id="person" required>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+      </div>
     </div>
-    <div>
-      <h2>Personas</h2>
-      <select name="person" id="person">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-      </select>
+
+    <div class="partner__content">
+      <div class="icon__container">
+        <Icon name="icon-partner" size={24} />
+      </div>
+      <!-- <h2>Socio ACA</h2> -->
+      <div class="checkbox">
+        <label for="partner">
+          <h2>Socio ACA</h2>
+        </label>
+        <input type="checkbox" name="partner" id="partner" required />
+      </div>
     </div>
-  </div>
-  <div class="button__container">
-    <button>Buscar</button>
-  </div>
+
+    <div class="button__container">
+      <button type="submit">Enviar</button>
+    </div>
+  </form>
 </article>
 
 <style lang="scss">
@@ -51,21 +67,27 @@ import { Icon } from "astro-icon/components";
     min-height: 150px;
     margin-inline: auto;
     margin-top: -5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background-color: $white-color-secondary;
     border-radius: 8px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    gap: 1rem;
-    padding: 1rem;
-    flex-wrap: wrap;
+
+    form {
+      width: 100%;
+      min-height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      flex-wrap: wrap;
+    }
 
     .checkin__content,
     .checkout__content,
     .person__content,
-    .button__container {
+    .button__container,
+    .partner__content {
       flex-grow: 1;
       height: 100%;
       display: flex;
@@ -94,6 +116,11 @@ import { Icon } from "astro-icon/components";
       }
     }
 
+    .partner__content {
+      #partner {
+      }
+    }
+
     .button__container {
       button {
         border: 1px solid $black-color;
@@ -117,3 +144,33 @@ import { Icon } from "astro-icon/components";
     }
   }
 </style>
+
+<script>
+  const $ = (selector: string) => document.querySelector(selector);
+  const form = $("#form") as HTMLFormElement;
+
+  const sendMessage = () => {
+    if (!form) {
+      return;
+    }
+
+    const formData = new FormData(form);
+
+    // Obtener los datos de los campos
+    const checkin = formData.get("checkin");
+    const checkout = formData.get("checkout");
+    const person = formData.get("person");
+    const partner = formData.get("partner")
+      ? "Soy socio ACA"
+      : "No soy socio ACA";
+
+    const URL = `https://api.whatsapp.com/send?phone=+543704247241&text=Hola,%20quiero%20realizar%20una%20reserva%20para%20el%20día%20${checkin},%20hasta%20${checkout},%20para%20${person}%20personas.%20${partner}`;
+
+    window.open(URL, "_blank");
+  };
+
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    sendMessage();
+  });
+</script>

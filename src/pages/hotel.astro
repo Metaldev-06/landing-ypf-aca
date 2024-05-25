@@ -12,6 +12,28 @@ import Checkin from "../components/hotel/Checkin.astro";
     </div>
 
     <Checkin />
+
+    <article class="hotel__content">
+      <div class="aboutus__container">
+        <div class="aboutus__image">
+          <img src="/img/room-1.jpg" alt="habitación" />
+        </div>
+
+        <div class="aboutus__text">
+          <h2>Confort y Modernidad</h2>
+
+          <div class="separator"></div>
+
+          <p>
+            Relájate en nuestro hotel ACA YPF, donde cada habitación está
+            diseñada para ofrecer máxima comodidad. Disfruta de baño privado,
+            aire acondicionado y televisores 4K de 50 pulgadas. Ideal para una
+            estancia perfecta después de un largo viaje. ¡Reserva tu habitación
+            ahora y vive la experiencia!
+          </p>
+        </div>
+      </div>
+    </article>
   </section>
 </Layout>
 
@@ -51,6 +73,60 @@ import Checkin from "../components/hotel/Checkin.astro";
         opacity: 0.5;
         filter: blur(5px);
       }
+    }
+
+    .hotel__content {
+      width: 95%;
+      max-width: $max-width;
+      margin: 5rem auto;
+      .aboutus__container {
+        width: 100%;
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        align-items: center;
+
+        .aboutus__image {
+          flex-grow: 1;
+          width: clamp(200px, 40%, 500px);
+          img {
+            width: 100%;
+            border-radius: 8px;
+            object-fit: cover;
+          }
+        }
+
+        .aboutus__text {
+          width: clamp(200px, 40%, 500px);
+
+          flex-grow: 1;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+
+          @include media-up(screenXs) {
+            width: 100%;
+          }
+
+          h2 {
+            font-size: clamp(2rem, 5vw, 2rem);
+            text-align: center;
+          }
+
+          p {
+            line-height: 1.5;
+          }
+          // text-align: center;
+        }
+      }
+    }
+
+    .separator {
+      width: 90%;
+      height: 3px;
+      background-color: $yellow-color;
+      margin: 0 auto;
+      border-radius: 50px;
     }
   }
 </style>

@@ -21,6 +21,7 @@
     "atropos": "^2.0.2",
     "keen-slider": "^6.8.6",
     "scss": "^0.2.4",
+    "twilio": "^5.1.0",
     "typescript": "^5.4.5"
   },
   "devDependencies": {
