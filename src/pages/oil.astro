@@ -1,0 +1,99 @@
+---
+import Atropos from "../common/components/Atropos.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Lubricantes">
+  <section class="oil__container">
+    <article class="card__container">
+      <Atropos
+        src="/img/Elaion_FS530.webp"
+        alt="Lubricantes"
+        className="my-atropos-1"
+        loading="lazy"
+        name="FS530"
+        type="SINTÉTICO"
+        goo="5W-30"
+        brand="ELAION"
+      />
+
+      <Atropos
+        src="/img/Elaion_MI1540.webp"
+        alt="Lubricantes"
+        className="my-atropos-2"
+        loading="lazy"
+        name="MI 1540"
+        type="MINERAL"
+        goo="15W-40"
+        brand="ELAION"
+      />
+
+      <Atropos
+        src="/img/Elaion_FS540.webp"
+        alt="Lubricantes"
+        className="my-atropos-3"
+        loading="lazy"
+        name="FS540"
+        type="SINTÉTICO"
+        goo="5W-40"
+        brand="ELAION"
+      />
+
+      <Atropos
+        src="/img/Elaion_MI2050.webp"
+        alt="Lubricantes"
+        className="my-atropos-4"
+        loading="lazy"
+        name="MI 2050"
+        type="MINERAL"
+        goo="20W-50"
+        brand="ELAION"
+      />
+
+      <Atropos
+        src="/img/Elaion_TS1040.webp"
+        alt="Lubricantes"
+        className="my-atropos-5"
+        loading="lazy"
+        name="TS 1040"
+        type="SEMISINTÉTICO"
+        goo="10W-40"
+        brand="ELAION"
+      />
+
+      <Atropos
+        src="/img/elaion-moto.webp"
+        alt="Lubricantes"
+        className="my-atropos-6"
+        loading="lazy"
+        name="Moto 2T 1L"
+        type="SEMISINTÉTICO"
+        goo="10W-40"
+        brand="ELAION"
+      />
+    </article>
+  </section>
+</Layout>
+
+<style lang="scss">
+  @import "../styles/_variables.scss";
+
+  .oil__container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: $black-color;
+
+    .card__container {
+      width: 95%;
+      min-height: 100vh;
+      max-width: $max-width;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding: 5rem 0;
+    }
+  }
+</style>

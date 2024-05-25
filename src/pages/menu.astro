@@ -154,10 +154,18 @@ import Layout from "../layouts/Layout.astro";
         }
       }
 
+      &:nth-child(odd) {
+        h2 {
+          align-self: flex-start;
+        }
+      }
       &:nth-child(even) {
         flex-direction: row-reverse;
 
         .menu__text {
+          h2 {
+            align-self: flex-end;
+          }
           .detail {
             transform: rotate(7-70deg);
             align-self: flex-end;

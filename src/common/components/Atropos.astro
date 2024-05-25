@@ -1,0 +1,123 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  className: string;
+  loading: string;
+  name: string;
+  type: string;
+  goo: string;
+  brand: string;
+}
+
+const { src, alt, className, loading, name, type, goo, brand } = Astro.props;
+---
+
+<div class="atropos my-atropos" class:list={className}>
+  <!-- scale container (required) -->
+  <div class="atropos-scale">
+    <!-- rotate container (required) -->
+    <div class="atropos-rotate">
+      <!-- inner container (required) -->
+      <div class="atropos-inner">
+        <astro-greet data-class={className}>
+          <div class="card__container">
+            <img
+              src={src}
+              loading={loading ? "lazy" : "eager"}
+              alt={alt}
+              class={className}
+              data-atropos-offset="2"
+            />
+
+            <div class="text__container">
+              <span class="brand">{brand}</span>
+              <h2 class="name">{name}</h2>
+              <span class="goo">{goo}</span>
+              <span class="type">{type}</span>
+            </div>
+          </div>
+        </astro-greet>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  @import "../../styles/_variables.scss";
+
+  .my-atropos {
+    width: 200px;
+    min-width: 200px;
+
+    .atropos-inner {
+      background-color: red;
+      border-radius: 4px;
+      background-color: rgba(130, 130, 130, 0.306);
+      padding: 1rem;
+
+      .card__container {
+        color: $white-color-secondary;
+        img {
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+          transition: all 0.3s ease-in-out;
+          aspect-ratio: 4 / 6;
+        }
+
+        .text__container {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          font-size: 0.8rem;
+
+          .brand {
+            font-weight: 900;
+            opacity: 0.8;
+          }
+          .name {
+          }
+          .goo {
+            opacity: 0.8;
+          }
+          .type {
+            letter-spacing: 0.15rem;
+            opacity: 0.8;
+          }
+        }
+
+        &:hover {
+          img {
+            scale: 1.05;
+          }
+        }
+      }
+    }
+  }
+
+  .onEnter {
+    scale: 1.1;
+  }
+</style>
+
+<script>
+  import Atropos from "atropos";
+
+  class AstroGreet extends HTMLElement {
+    constructor() {
+      super();
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const myAtropos = Atropos({
+          el: `.${this.dataset.class}`,
+          shadow: true,
+          shadowOffset: 300,
+          highlight: true,
+        });
+      });
+    }
+  }
+
+  customElements.define("astro-greet", AstroGreet);
+</script>

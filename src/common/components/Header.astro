@@ -9,9 +9,11 @@ const currentPath = pathname.slice(1);
 
 <header class="header__container" transition:persist>
   <div class="header__content">
-    <picture class="header__logo">
-      <Image src={logo} alt="Logo Diaz Servicios" loading="eager" />
-    </picture>
+    <a href="/">
+      <picture class="header__logo">
+        <Image src={logo} alt="Logo Diaz Servicios" loading="eager" />
+      </picture>
+    </a>
 
     <nav class="header__nav">
       <a href="/" class={currentPath === "" ? "active" : ""}>Inicio</a>
@@ -20,33 +22,47 @@ const currentPath = pathname.slice(1);
       <a href="/hotel" class={currentPath === "hotel" ? "active" : ""}>Hotel</a>
       <!-- <a href="/contact" class={currentPath === "contact" ? "active" : ""}
         >Contacto</a
-      > -->
+        > -->
+      <a href="/oil" class={currentPath === "oil" ? "active" : ""}
+        >Lubricantes</a
+      >
     </nav>
 
-    <picture class="header__logo--secondary">
-      <Image
-        src={logoACA}
-        alt="Logo Automóvil Club Argentino"
-        loading="eager"
-      />
-    </picture>
+    <a href="/">
+      <picture class="header__logo--secondary">
+        <Image
+          src={logoACA}
+          alt="Logo Automóvil Club Argentino"
+          loading="eager"
+        />
+      </picture>
+    </a>
   </div>
 </header>
 
 <header class="header__container--mobile" transition:persist>
   <div class="header__images">
-    <picture class="header__logo">
-      <Image src={logo} alt="Logo Diaz Servicios" loading="eager" width={50} />
-    </picture>
+    <a href="/">
+      <picture class="header__logo">
+        <Image
+          src={logo}
+          alt="Logo Diaz Servicios"
+          loading="eager"
+          width={50}
+        />
+      </picture>
+    </a>
 
-    <picture class="header__logo--secondary">
-      <Image
-        src={logoACA}
-        alt="Logo Automóvil Club Argentino"
-        loading="eager"
-        width={50}
-      />
-    </picture>
+    <a href="/">
+      <picture class="header__logo--secondary">
+        <Image
+          src={logoACA}
+          alt="Logo Automóvil Club Argentino"
+          loading="eager"
+          width={50}
+        />
+      </picture>
+    </a>
   </div>
 
   <div class="header__content--mobile">
@@ -55,6 +71,9 @@ const currentPath = pathname.slice(1);
       <a href="/menu" class={currentPath === "menu" ? "active" : ""}>Menú</a>
       <!-- <a href="/" class={''}>Promociones</a> -->
       <a href="/hotel" class={currentPath === "hotel" ? "active" : ""}>Hotel</a>
+      <a href="/oil" class={currentPath === "oil" ? "active" : ""}
+        >Lubricantes</a
+      >
       <!-- <a href="/contact" class={currentPath === "contact" ? "active" : ""}
         >Contacto</a
       > -->
