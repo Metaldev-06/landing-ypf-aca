@@ -5,10 +5,12 @@ import { column, defineDb, defineTable } from "astro:db";
 const Oils = defineTable({
   columns: {
     id: column.number({ primaryKey: true }),
-    name: column.text(),
-    type: column.text(),
-    goo: column.text(),
-    brand: column.text(),
+    name: column.text({ unique: true, optional: false }),
+    type: column.text({ optional: false }),
+    goo: column.text({ optional: false }),
+    brand: column.text({ default: "ELAION" }),
+    image: column.text({ optional: false }),
+    url: column.text({ optional: false }),
   },
 });
 
