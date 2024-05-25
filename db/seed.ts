@@ -7,7 +7,7 @@ export default async function seed() {
   await db.insert(Oils).values([
     {
       name: "FS530",
-      type: "SINTÉTICO",
+      type: "sintetico",
       goo: "5W-30",
       brand: "ELAION",
       image:
@@ -16,7 +16,7 @@ export default async function seed() {
     },
     {
       name: "MI 1540",
-      type: "MINERAL",
+      type: "mineral",
       goo: "15W-40",
       brand: "ELAION",
       image:
@@ -25,7 +25,7 @@ export default async function seed() {
     },
     {
       name: "FS540",
-      type: "SINTÉTICO",
+      type: "sintetico",
       goo: "5W-40",
       brand: "ELAION",
       image:
@@ -34,7 +34,7 @@ export default async function seed() {
     },
     {
       name: "MI 2050",
-      type: "MINERAL",
+      type: "mineral",
       goo: "20W-50",
       brand: "ELAION",
       image:
@@ -43,7 +43,7 @@ export default async function seed() {
     },
     {
       name: "TS 1040",
-      type: "SEMISINTÉTICO",
+      type: "semisintetico",
       goo: "10W-40",
       brand: "ELAION",
       image:
@@ -52,7 +52,7 @@ export default async function seed() {
     },
     {
       name: "Moto 2T 1L",
-      type: "SINTÉTICO",
+      type: "sintetico",
       goo: "...",
       brand: "ELAION",
       image:
@@ -61,7 +61,7 @@ export default async function seed() {
     },
     {
       name: "Moto 4T 500",
-      type: "MINERAL",
+      type: "mineral",
       goo: "20W-50",
       brand: "ELAION",
       image:
@@ -70,7 +70,7 @@ export default async function seed() {
     },
     {
       name: "Moto Cadenas",
-      type: "SINTÉTICO",
+      type: "sintetico",
       goo: "...",
       brand: "ELAION",
       image:
@@ -80,21 +80,21 @@ export default async function seed() {
 
     {
       name: "HIDRO ATF",
-      type: "HIDRÁULICO",
+      type: "hidraulico",
       goo: "...",
       brand: "YPF",
       image:
         "https://res.cloudinary.com/dw24usdw9/image/upload/v1716641757/hidro-atf_p03psa.webp",
-      url: "https://lubricantes.ypf.com/elaion-motos.html",
+      url: "https://lubricantes.ypf.com/otros-lubricantes-m.html",
     },
     {
       name: "GRASA 62 EP",
-      type: "MINERAL",
+      type: "mineral",
       goo: "...",
       brand: "YPF",
       image:
         "https://res.cloudinary.com/dw24usdw9/image/upload/v1716642821/Dise%C3%B1o_sin_t%C3%ADtulo_2_iyysk5.webp",
-      url: "https://lubricantes.ypf.com/elaion-motos.html",
+      url: "https://lubricantes.ypf.com/otros-lubricantes-m.html",
     },
   ]);
 }
