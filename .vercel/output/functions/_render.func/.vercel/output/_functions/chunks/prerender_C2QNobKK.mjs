@@ -4,3 +4,4 @@ export const c = noop;
 export const h = noop;
 export const i = noop;
 export const m = noop;
+export const o = noop;
