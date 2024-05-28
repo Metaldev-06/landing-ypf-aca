@@ -3,8 +3,11 @@ import { Image } from "astro:assets";
 import logo from "../../../public/img/logo-diaz-servicios.svg";
 import logoACA from "../../../public/img/logo-aca.svg";
 
-// const pathname = new URL(Astro.request.url).pathname;
-// const currentPath = pathname.slice(1);
+const { pathname } = Astro.url;
+const normalizedPathName =
+  pathname.length > 1 && pathname.endsWith("/")
+    ? pathname.slice(0, -1)
+    : pathname;
 ---
 
 <header class="header__container" transition:persist>
@@ -16,14 +19,21 @@ import logoACA from "../../../public/img/logo-aca.svg";
     </a>
 
     <nav class="header__nav">
-      <a href="/">Inicio</a>
-      <a href="/menu">Menú</a>
+      <a href="/" class={normalizedPathName === "/" ? "active" : ""}>Inicio</a>
+      <a href="/menu" class={normalizedPathName === "/menu" ? "active" : ""}
+        >Menú</a
+      >
       <!-- <a href="/" class={''}>Promociones</a> -->
-      <a href="/hotel">Hotel</a>
+      <a href="/hotel" class={normalizedPathName === "/hotel" ? "active" : ""}
+        >Hotel</a
+      >
       <!-- <a href="/contact" class={currentPath === "contact" ? "active" : ""}
         >Contacto</a
         > -->
-      <a href="/oil/all">Lubricantes</a>
+      <a
+        href="/oil/all"
+        class={normalizedPathName === "/oil/all" ? "active" : ""}>Lubricantes</a
+      >
     </nav>
 
     <a href="/">
@@ -65,11 +75,18 @@ import logoACA from "../../../public/img/logo-aca.svg";
 
   <div class="header__content--mobile">
     <nav class="header__nav">
-      <a href="/">Inicio</a>
-      <a href="/menu">Menú</a>
+      <a href="/" class={normalizedPathName === "/" ? "active" : ""}>Inicio</a>
+      <a href="/menu" class={normalizedPathName === "/menu" ? "active" : ""}
+        >Menú</a
+      >
       <!-- <a href="/" class={''}>Promociones</a> -->
-      <a href="/hotel">Hotel</a>
-      <a href="/oil/all">Lubricantes</a>
+      <a href="/hotel" class={normalizedPathName === "/hotel" ? "active" : ""}
+        >Hotel</a
+      >
+      <a
+        href="/oil/all"
+        class={normalizedPathName === "/oil/all" ? "active" : ""}>Lubricantes</a
+      >
       <!-- <a href="/contact" class={currentPath === "contact" ? "active" : ""}
         >Contacto</a
       > -->
@@ -186,8 +203,9 @@ import logoACA from "../../../public/img/logo-aca.svg";
   }
 </style>
 
-<script>
-  const $ = (selector: string) => document.querySelector(selector);
+<script is:inline>
+  const $ = (selector) => document.querySelector(selector);
+  const navLinks = document.querySelectorAll("nav a");
 
   const header = $(".header__container");
   const headerMobile = $(".header__container--mobile");
@@ -209,6 +227,21 @@ import logoACA from "../../../public/img/logo-aca.svg";
       isSticky = false;
     }
   };
+
+  document.addEventListener("astro:after-swap", () => {
+    navLinks.forEach((link) => {
+      link.classList.remove("active");
+
+      const currentPath = window.location.pathname.slice(1);
+
+      const hrefArray = link.href.split("/");
+      const thisPath = hrefArray[hrefArray.length - 1];
+
+      if (currentPath === thisPath) {
+        link.classList.add("active");
+      }
+    });
+  });
 
   document.addEventListener("scroll", activedFixedScroll);
 </script>
