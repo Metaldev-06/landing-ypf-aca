@@ -1,15 +1,18 @@
 ---
 import Image from "astro/components/Image.astro";
-import image1 from "../../../public/img/product-1.jpg";
-import image2 from "../../../public/img/product-2.jpg";
-import image3 from "../../../public/img/product-3.jpg";
+import image1 from "../../../public/img/gallery-1.jpg";
+import image2 from "../../../public/img/gallery-2.jpg";
+import image3 from "../../../public/img/gallery-3.jpg";
+import image4 from "../../../public/img/gallery-4.jpg";
+import image5 from "../../../public/img/gallery-5.jpg";
+import image6 from "../../../public/img/gallery-6.jpg";
 ---
 
 <article class="gallery__container">
   <div class="row">
     <div class="secondary">
       <Image
-        src={image2}
+        src={image1}
         alt="Imagenes de la estación"
         width="544"
         loading="lazy"
@@ -17,7 +20,7 @@ import image3 from "../../../public/img/product-3.jpg";
     </div>
     <div class="primary">
       <Image
-        src={image1}
+        src={image2}
         alt="Imagenes de la estación"
         width="653"
         loading="lazy"
@@ -35,7 +38,7 @@ import image3 from "../../../public/img/product-3.jpg";
   <div class="row">
     <div class="secondary">
       <Image
-        src={image1}
+        src={image4}
         alt="Imagenes de la estación"
         width="544"
         loading="lazy"
@@ -43,7 +46,7 @@ import image3 from "../../../public/img/product-3.jpg";
     </div>
     <div class="primary">
       <Image
-        src={image3}
+        src={image5}
         alt="Imagenes de la estación"
         width="653"
         loading="lazy"
@@ -51,7 +54,7 @@ import image3 from "../../../public/img/product-3.jpg";
     </div>
     <div class="secondary">
       <Image
-        src={image2}
+        src={image6}
         alt="Imagenes de la estación"
         width="544"
         loading="lazy"
@@ -61,6 +64,8 @@ import image3 from "../../../public/img/product-3.jpg";
 </article>
 
 <style lang="scss">
+  @import "../../styles/_mediaqueries.scss";
+
   .gallery__container {
     width: 100%;
     max-width: 1400px;
@@ -72,6 +77,11 @@ import image3 from "../../../public/img/product-3.jpg";
     justify-content: center;
     align-items: center;
     gap: 1rem;
+
+    @include media-up(mobile) {
+      width: 95%;
+      margin: 5rem auto;
+    }
 
     .row {
       display: flex;
@@ -114,6 +124,17 @@ import image3 from "../../../public/img/product-3.jpg";
     .row:nth-child(2) {
       padding-left: 1rem;
       // align-self: flex-end;
+    }
+
+    @include media-up(mobile) {
+      .row:nth-child(1) {
+      padding-right: 0;
+    }
+
+    .row:nth-child(2) {
+      padding-left: 0;
+      // align-self: flex-end;
+    }
     }
   }
 </style>
