@@ -150,7 +150,7 @@ if (category === "all") {
       .nav__container {
         width: 100%;
         max-width: 200px;
-        height: clamp(300px, 50vh, 300px);
+        height: clamp(300px, 50vh, 400px);
         background-color: rgba(62, 62, 62, 0.3);
         color: $white-color-secondary;
         display: flex;
@@ -167,23 +167,33 @@ if (category === "all") {
         }
 
         ul {
+          width: 100%;
+          max-width: 300px;
+          margin: 0 auto;
           display: flex;
           flex-direction: column;
           // padding-top: 1rem;
           padding-bottom: 1rem;
-          // gap: 0.3rem;
+          gap: 0.3rem;
+          text-align: left;
           li {
+            background-color: rgba(62, 62, 62, 0.3);
+            border-radius: 4px;
+            padding: .5rem;
             .active {
               opacity: 1;
             }
             a {
-              cursor: pointer;
               padding: 0.3rem;
               font-weight: bold;
               opacity: 0.8;
               color: $white-color-secondary;
-
-              &:hover {
+              
+            }
+            &:hover {
+              cursor: pointer;
+              background-color: rgba(62, 62, 62, 0.5);
+              a {
                 opacity: 1;
               }
             }
@@ -193,15 +203,9 @@ if (category === "all") {
 
       .card__container {
         width: 100%;
-        min-height: 100vh;
-        max-width: $max-width;
-        margin: 0 auto;
-        display: flex;
-        justify-content: center;
-        align-items: flex-start;
-        flex-wrap: wrap;
-        gap: 1rem;
-        flex-grow: 1;
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       }
     }
   }
