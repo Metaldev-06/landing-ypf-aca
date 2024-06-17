@@ -1,11 +1,11 @@
 ---
-import { db, Promotions } from "astro:db";
+import { db, Promotions as PromotionsData } from "astro:db";
 
 import Layout from "../layouts/Layout.astro";
 import PromotionGrid from "../common/components/PromotionGrid.astro";
 import type { PromotionData } from "../common/models/promotion.interfaces";
 
-const promotionsData: PromotionData[] = await db.select().from(Promotions);
+const promotionsData: PromotionData[] = await db.select().from(PromotionsData);
 ---
 
 <Layout title="Promociones">
