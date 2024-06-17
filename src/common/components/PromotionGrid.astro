@@ -1,0 +1,99 @@
+---
+import type { PromotionData } from "../models/promotion.interfaces";
+
+interface Props {
+  promotionsData: PromotionData[];
+}
+
+const { promotionsData } = Astro.props;
+---
+
+<div class="promotionsGrid__container">
+  <div class="cards__container">
+    {
+      promotionsData.map((promotion) => (
+        <a
+          href={promotion?.url}
+          class="promotion__card"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img src={promotion?.image} alt="Promocion" />
+          <h3>{promotion?.title}</h3>
+        </a>
+      ))
+    }
+  </div>
+</div>
+
+<style lang="scss">
+  .promotionsGrid__container {
+    width: 95%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .cards__container {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      padding: 1rem 0;
+      margin: 0 auto;
+
+      .promotion__card {
+        width: 100%;
+        color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        background-color: #202020;
+        transition: all 0.3s;
+
+        img {
+          width: 100%;
+        }
+
+        h3 {
+          font-size: clamp(0.5rem, 3vw, 1rem);
+          padding: 1rem;
+          font-weight: bold;
+        }
+
+        &:hover {
+          background-color: #2a2b2b;
+        }
+      }
+    }
+  }
+
+  .loader {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+  }
+
+  .loader:before,
+  .loader:after {
+    content: "";
+    border-radius: 50%;
+    position: absolute;
+    inset: 0;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3) inset;
+  }
+  .loader:after {
+    box-shadow: 0 2px 0 #ff3d00 inset;
+    animation: rotate 2s linear infinite;
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+</style>

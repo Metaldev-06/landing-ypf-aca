@@ -1,0 +1,61 @@
+---
+import { db, Promotions } from "astro:db";
+
+import Layout from "../layouts/Layout.astro";
+import PromotionGrid from "../common/components/PromotionGrid.astro";
+import type { PromotionData } from "../common/models/promotion.interfaces";
+
+const promotionsData: PromotionData[] = await db.select().from(Promotions);
+---
+
+<Layout title="Promociones">
+  <section class="promotions__section">
+    <div class="banner">
+      <img src="/img/promo-en-estaciones.webp" alt="Banner" />
+    </div>
+
+    <article class="grid__container">
+      <PromotionGrid promotionsData={promotionsData} />
+    </article>
+  </section>
+</Layout>
+
+<style lang="scss">
+  @import "../styles/_variables.scss", "../styles/_mediaqueries.scss";
+
+  .promotions__section {
+    width: 100%;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5rem 0;
+    background-color: $black-color;
+    color: $white-color-secondary;
+
+    .banner {
+      width: 100%;
+      height: 125px;
+
+      @include media-up(tabletXS) {
+        height: 100px;
+      }
+      @include media-up(mobile) {
+        height: 50px;
+      }
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .grid__container {
+      width: 100%;
+      min-height: 70dvh;
+      margin: 2rem auto;
+    }
+  }
+</style>

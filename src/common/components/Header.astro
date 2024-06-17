@@ -3,6 +3,8 @@ import { Image } from "astro:assets";
 import logo from "../../../public/img/logo-diaz-servicios.svg";
 import logoACA from "../../../public/img/logo-aca.svg";
 
+import NavMobile from "../../common/components/NavMobile.astro";
+
 const { pathname } = Astro.url;
 const normalizedPathName =
   pathname.length > 1 && pathname.endsWith("/")
@@ -23,16 +25,17 @@ const normalizedPathName =
       <a href="/menu" class={normalizedPathName === "/menu" ? "active" : ""}
         >Menú</a
       >
-      <!-- <a href="/" class={''}>Promociones</a> -->
       <a href="/hotel" class={normalizedPathName === "/hotel" ? "active" : ""}
         >Hotel</a
       >
-      <!-- <a href="/contact" class={currentPath === "contact" ? "active" : ""}
-        >Contacto</a
-        > -->
       <a
         href="/oil/all"
         class={normalizedPathName === "/oil/all" ? "active" : ""}>Lubricantes</a
+      >
+      <a
+        href="/promotions"
+        class={normalizedPathName === "/promotions" ? "active" : ""}
+        >Promociones</a
       >
     </nav>
 
@@ -49,48 +52,25 @@ const normalizedPathName =
 </header>
 
 <header class="header__container--mobile" transition:persist>
-  <div class="header__images">
-    <a href="/">
-      <picture class="header__logo">
-        <Image
-          src={logo}
-          alt="Logo Diaz Servicios"
-          loading="eager"
-          width={50}
-        />
-      </picture>
-    </a>
+  <a href="/">
+    <picture class="header__logo">
+      <Image src={logo} alt="Logo Diaz Servicios" loading="eager" width={50} />
+    </picture>
+  </a>
 
-    <a href="/">
-      <picture class="header__logo--secondary">
-        <Image
-          src={logoACA}
-          alt="Logo Automóvil Club Argentino"
-          loading="eager"
-          width={50}
-        />
-      </picture>
-    </a>
-  </div>
+  <a href="/">
+    <picture class="header__logo--secondary">
+      <Image
+        src={logoACA}
+        alt="Logo Automóvil Club Argentino"
+        loading="eager"
+        width={50}
+      />
+    </picture>
+  </a>
 
   <div class="header__content--mobile">
-    <nav class="header__nav">
-      <a href="/" class={normalizedPathName === "/" ? "active" : ""}>Inicio</a>
-      <a href="/menu" class={normalizedPathName === "/menu" ? "active" : ""}
-        >Menú</a
-      >
-      <!-- <a href="/" class={''}>Promociones</a> -->
-      <a href="/hotel" class={normalizedPathName === "/hotel" ? "active" : ""}
-        >Hotel</a
-      >
-      <a
-        href="/oil/all"
-        class={normalizedPathName === "/oil/all" ? "active" : ""}>Lubricantes</a
-      >
-      <!-- <a href="/contact" class={currentPath === "contact" ? "active" : ""}
-        >Contacto</a
-      > -->
-    </nav>
+    <NavMobile />
   </div>
 </header>
 
@@ -108,7 +88,7 @@ const normalizedPathName =
     justify-content: center;
     align-items: center;
 
-    @include media-up(mobileXL) {
+    @include media-up(tabletXS) {
       display: none;
     }
 
@@ -175,19 +155,17 @@ const normalizedPathName =
   .header__container--mobile {
     display: none;
     width: 100%;
-    // height: 100px;
     position: fixed;
     top: 0;
     z-index: 1000;
     transition: background-color 0.3s ease;
     justify-content: center;
     align-items: center;
-    padding-bottom: 0.5rem;
+    padding: 0.5rem;
 
-    @include media-up(mobileXL) {
+    @include media-up(tabletXS) {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
     }
 

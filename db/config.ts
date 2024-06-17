@@ -14,6 +14,18 @@ const Oils = defineTable({
   },
 });
 
+const Promotions = defineTable({
+  columns: {
+    id: column.number({ primaryKey: true }),
+    title: column.text({ unique: true, optional: false }),
+    active_from: column.text({ optional: false }),
+    active_to: column.text({ optional: false }),
+    category: column.text({ optional: false }),
+    url: column.text({ optional: false }),
+    image: column.text({ optional: false }),
+  },
+});
+
 export default defineDb({
-  tables: { Oils },
+  tables: { Oils, Promotions },
 });

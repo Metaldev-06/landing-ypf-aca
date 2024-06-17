@@ -1,0 +1,194 @@
+---
+const { pathname } = Astro.url;
+const normalizedPathName =
+  pathname.length > 1 && pathname.endsWith("/")
+    ? pathname.slice(0, -1)
+    : pathname;
+---
+
+<div class="hamburger">
+  <div class="_layer -top"></div>
+  <div class="_layer -mid"></div>
+  <div class="_layer -bottom"></div>
+</div>
+
+<nav class="menuppal">
+  <ul>
+    <li>
+      <a
+        class="nav__link"
+        href="/"
+        class={normalizedPathName === "/" ? "active" : ""}
+        onclick="closeMenu()">Inicio</a
+      >
+    </li>
+    <li>
+      <a
+        class="nav__link"
+        href="/menu"
+        class={normalizedPathName === "/menu" ? "active" : ""}
+        onclick="closeMenu()">Menú</a
+      >
+    </li>
+    <li>
+      <a
+        class="nav__link"
+        href="/hotel"
+        class={normalizedPathName === "/hotel" ? "active" : ""}
+        onclick="closeMenu()">Hotel</a
+      >
+    </li>
+    <li>
+      <a
+        class="nav__link"
+        href="/oil/all"
+        class={normalizedPathName === "/oil/all" ? "active" : ""}
+        onclick="closeMenu()">Lubricantes</a
+      >
+    </li>
+    <li>
+      <a
+        class="nav__link"
+        href="/promotions"
+        class={normalizedPathName === "/promotions" ? "active" : ""}
+        onclick="closeMenu()">Procomciones</a
+      >
+    </li>
+  </ul>
+</nav>
+
+<style lang="scss">
+  @import "../../styles/_variables.scss";
+
+  .hamburger {
+    position: fixed;
+    background-color: transparent;
+    right: 0.5rem;
+    top: 1rem;
+    height: 30px;
+    width: 30px;
+    /* padding: 20px 20px; */
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transition: -webkit-transform 0.25s
+      cubic-bezier(0.05, 1.04, 0.72, 0.98);
+    transition: transform 0.25s cubic-bezier(0.05, 1.04, 0.72, 0.98);
+    z-index: 1002;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .hamburger.is-active {
+    background-color: none;
+  }
+  ._layer {
+    background: $white-color;
+    margin-bottom: 4px;
+    border-radius: 2px;
+    width: 28px;
+    height: 4px;
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transition: all 0.25s cubic-bezier(0.05, 1.04, 0.72, 0.98);
+    transition: all 0.25s cubic-bezier(0.05, 1.04, 0.72, 0.98);
+  }
+  .hamburger:hover .-top {
+    -webkit-transform: translateY(-100%);
+    -ms-transform: translateY(-100%);
+    transform: translateY(-100%);
+  }
+  .hamburger:hover .-bottom {
+    -webkit-transform: translateY(100%);
+    -ms-transform: translateY(100%);
+    transform: translateY(100%);
+  }
+  .hamburger.is-active .-top {
+    -webkit-transform: translateY(200%) rotate(45deg) !important;
+    -ms-transform: translateY(200%) rotate(45deg) !important;
+    transform: translateY(200%) rotate(45deg) !important;
+  }
+  .hamburger.is-active .-mid {
+    opacity: 0;
+  }
+  .hamburger.is-active .-bottom {
+    -webkit-transform: translateY(-200%) rotate(135deg) !important;
+    -ms-transform: translateY(-200%) rotate(135deg) !important;
+    transform: translateY(-200%) rotate(135deg) !important;
+  }
+
+  .menuppal.is_active {
+    transform: translate3d(0px, 0px, 0px);
+  }
+  .menuppal {
+    background-color: $black-color;
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    overflow-y: scroll;
+    position: fixed;
+    top: 0;
+    transform: translate3d(0px, -100%, 0px);
+    transition: transform 0.35s cubic-bezier(0.05, 1.04, 0.72, 0.98) 0s;
+    width: 100%;
+    z-index: 1001;
+    user-select: none;
+  }
+  .menuppal ul {
+    margin: 0;
+    padding: 0;
+  }
+  .menuppal ul li {
+    list-style: none;
+    text-align: center;
+    font-family: Verdadna, Arial, Helvetica;
+    color: $white-color;
+    font-size: 1.5rem;
+    line-height: 3em;
+    height: 3em;
+    color: #369;
+    text-transform: none;
+    font-weight: bold;
+  }
+  .menuppal ul li a {
+    text-decoration: none;
+    color: $white-color;
+  }
+  .menuppal ul li a:hover {
+    text-decoration: none;
+    color: #333;
+  }
+  .button__container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .theme__button {
+      width: 100px;
+    }
+  }
+</style>
+
+<script is:inline>
+  const $2 = (selector) => document.querySelector(selector);
+
+  const menu = $2(".hamburger");
+  const navMenu = $2(".menuppal");
+
+  function toggleMenu(event) {
+    this.classList.toggle("is-active");
+    navMenu.classList.toggle("is_active");
+    event.preventDefault();
+  }
+
+  function closeMenu() {
+    menu.classList.remove("is-active");
+    navMenu.classList.remove("is_active");
+  }
+
+  menu.addEventListener("click", toggleMenu, false);
+</script>

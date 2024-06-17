@@ -1,9 +1,7 @@
-import { db, Oils } from "astro:db";
+import { db, Oils, Promotions } from "astro:db";
 
 // https://astro.build/db/seed
 export default async function seed() {
-  // TODO
-
   await db.insert(Oils).values([
     {
       name: "FS530",
@@ -95,6 +93,36 @@ export default async function seed() {
       image:
         "https://res.cloudinary.com/dw24usdw9/image/upload/v1716642821/Dise%C3%B1o_sin_t%C3%ADtulo_2_iyysk5.webp",
       url: "https://lubricantes.ypf.com/otros-lubricantes-m.html",
+    },
+  ]);
+
+  await db.insert(Promotions).values([
+    {
+      title: "5% de descuento Socios ACA",
+      active_from: "12/02/2020",
+      active_to: "",
+      category: "aca",
+      image:
+        "https://res.cloudinary.com/dw24usdw9/image/upload/v1718593044/ypf-aca/2ffccc2a-52a6-435d-b4db-cab3c8d3bfb0.png",
+      url: "https://serviclub.com.ar/blogs/77_5-de-descuento-socios-aca.html",
+    },
+    {
+      title: "PROMO 20% dto ELAION AURO en BOXES",
+      active_from: "01/03/2024",
+      active_to: "30/04/2024",
+      category: "boxes",
+      image:
+        "https://res.cloudinary.com/dw24usdw9/image/upload/v1718596317/ypf-aca/45c5401c-c9da-497b-9b34-4bd027a2747f.png",
+      url: "https://serviclub.com.ar/blogs/77_5-de-descuento-socios-aca.html",
+    },
+    {
+      title: "VIAJÁ COMO UN CAMPEÓN",
+      active_from: "01/03/2024",
+      active_to: "30/04/2024",
+      category: "estaciones",
+      image:
+        "https://res.cloudinary.com/dw24usdw9/image/upload/v1718596455/ypf-aca/5ab2e96e-aa4f-4e5e-81e3-e16e48d02570.png",
+      url: "https://serviclub.com.ar/blogs/371_viaj-como-un-campen.html",
     },
   ]);
 }
