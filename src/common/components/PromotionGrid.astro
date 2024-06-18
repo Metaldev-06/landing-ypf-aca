@@ -1,5 +1,8 @@
 ---
+import Image from "astro/components/Image.astro";
+
 import type { PromotionData } from "../models/promotion.interfaces";
+
 
 interface Props {
   promotionsData: PromotionData[];
@@ -35,7 +38,7 @@ const isPromotionActive = (active_from: string, active_to: string) => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <img src={promotion?.image} alt="Promocion" />
+          <Image src={promotion?.image} alt="Promocion" width="200" height="200" />
           <div class="promotion__text">
             <h3>{promotion?.title}</h3>
             <div

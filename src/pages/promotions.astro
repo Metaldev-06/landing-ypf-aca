@@ -1,9 +1,11 @@
 ---
 import { db, Promotions as PromotionsData } from "astro:db";
+import Image from "astro/components/Image.astro";
 
 import Layout from "../layouts/Layout.astro";
 import PromotionGrid from "../common/components/PromotionGrid.astro";
 import type { PromotionData } from "../common/models/promotion.interfaces";
+import ImagePromo from "../../public/img/promo-en-estaciones.webp";
 
 const promotionsData: PromotionData[] = await db.select().from(PromotionsData);
 ---
@@ -11,7 +13,7 @@ const promotionsData: PromotionData[] = await db.select().from(PromotionsData);
 <Layout title="Promociones">
   <section class="promotions__section">
     <div class="banner">
-      <img src="/img/promo-en-estaciones.webp" alt="Banner" />
+      <Image src={ImagePromo} alt="Promociones Banner" loading="eager" />
     </div>
 
     <article class="grid__container">
