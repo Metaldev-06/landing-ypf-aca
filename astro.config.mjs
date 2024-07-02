@@ -3,15 +3,13 @@ import icon from "astro-icon";
 import vercel from "@astrojs/vercel/serverless";
 import db from "@astrojs/db";
 
-import svelte from "@astrojs/svelte";
-
 // https://astro.build/config
 export default defineConfig({
-  integrations: [icon(), db(), svelte()],
+  integrations: [icon(), db()],
   output: "server",
   adapter: vercel({
     webAnalytics: {
-      enabled: true
-    }
-  })
+      enabled: true,
+    },
+  }),
 });
