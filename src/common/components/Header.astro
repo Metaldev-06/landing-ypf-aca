@@ -69,8 +69,10 @@ const normalizedPathName =
     </picture>
   </a>
 
-  <div class="header__content--mobile">
-    <NavMobile />
+  <div class="mobile__container">
+    <div class="header__content--mobile">
+      <NavMobile />
+    </div>
   </div>
 </header>
 
@@ -150,6 +152,12 @@ const normalizedPathName =
     .active {
       opacity: 1;
     }
+  }
+
+  .mobile__container {
+    width: 30px;
+    height: 30px;
+    position: relative;
   }
 
   .header__container--mobile {

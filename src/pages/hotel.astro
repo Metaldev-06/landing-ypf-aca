@@ -1,6 +1,39 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Checkin from "../components/hotel/Checkin.astro";
+
+const cardHotels = [
+  {
+    image: "/img/minify-hotel/tres-camas.webp",
+    title: "Confort y Modernidad",
+    description:
+      "Relájate en nuestro hotel ACA YPF, donde cada habitación está diseñada para ofrecer máxima comodidad.",
+  },
+  {
+    image: "/img/minify-hotel/televisor.webp",
+    title: "Entretenimiento de Alta Calidad",
+    description:
+      "Disfruta de baño privado, aire acondicionado y televisores 4K de 50 pulgadas. Ideal para una estancia perfecta después de un largo viaje. ¡Reserva tu habitación ahora y vive la experiencia!",
+  },
+  {
+    image: "/img/minify-hotel/desayuno.webp",
+    title: "Desayuno Incluido",
+    description:
+      "Comienza tu día con un delicioso desayuno incluido en tu estancia. Disfruta de una variedad de opciones frescas y nutritivas para empezar tu jornada con energía. ¡Hospédate con nosotros y deleita tu paladar!",
+  },
+  {
+    image: "/img/minify-hotel/fachada-hotel.webp",
+    title: "Tu Refugio Nocturno",
+    description:
+      "Después de un largo día de viaje, encuentra el refugio perfecto en nuestro hotel ACA YPF. ¡Te esperamos!",
+  },
+  {
+    image: "/img/minify-hotel/baño-1.webp",
+    title: "Baños Privados de Lujo",
+    description:
+      "Cada habitación cuenta con un baño privado equipado con todas las comodidades que necesitas para un momento de relajación y confort.",
+  },
+];
 ---
 
 <Layout title="Hotel">
@@ -13,25 +46,26 @@ import Checkin from "../components/hotel/Checkin.astro";
     <Checkin />
 
     <article class="hotel__content">
-      <div class="aboutus__container">
-        <div class="aboutus__image">
-          <img src="/img/room-1.jpg" alt="habitación" />
-        </div>
+      {
+        cardHotels.map(({ image, title, description }) => (
+          <div class="aboutus__container">
+            <div class="aboutus__image">
+              <img
+                src={image}
+                alt="Imagenes de Habitaciones"
+              />
+            </div>
 
-        <div class="aboutus__text">
-          <h2>Confort y Modernidad</h2>
-
-          <div class="separator"></div>
-
-          <p>
-            Relájate en nuestro hotel ACA YPF, donde cada habitación está
-            diseñada para ofrecer máxima comodidad. Disfruta de baño privado,
-            aire acondicionado y televisores 4K de 50 pulgadas. Ideal para una
-            estancia perfecta después de un largo viaje. ¡Reserva tu habitación
-            ahora y vive la experiencia!
-          </p>
-        </div>
-      </div>
+            <div class="aboutus__text">
+              <h2>{title}</h2>
+              <div class="separator" />
+              <p>
+                {description}
+              </p>
+            </div>
+          </div>
+        ))
+      }
     </article>
   </section>
 </Layout>
@@ -78,20 +112,29 @@ import Checkin from "../components/hotel/Checkin.astro";
       width: 95%;
       max-width: $max-width;
       margin: 5rem auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+
       .aboutus__container {
         width: 100%;
         display: flex;
         gap: 1rem;
         flex-wrap: wrap;
         align-items: center;
+        background-color: rgba(128, 128, 128, 0.1);
+        border-radius: 8px;
+        padding: 1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 
         .aboutus__image {
           flex-grow: 1;
           width: clamp(200px, 40%, 500px);
           img {
             width: 100%;
-            border-radius: 8px;
+            border-radius: 4px;
             object-fit: cover;
+            aspect-ratio: 21 / 9;
           }
         }
 
@@ -117,6 +160,10 @@ import Checkin from "../components/hotel/Checkin.astro";
           }
           // text-align: center;
         }
+      }
+
+      .aboutus__container:nth-child(even) {
+        flex-direction: row-reverse;
       }
     }
 
