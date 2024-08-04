@@ -10,22 +10,7 @@ interface Props {
 
 const { promotionsData } = Astro.props;
 
-const convertToISO = (dateString: string) => {
-  const [day, month, year] = dateString.split("/");
-  return `${year}-${month}-${day}`;
-};
 
-const isPromotionActive = (active_from: string, active_to: string) => {
-  const currentDate = new Date();
-  const fromDate = new Date(convertToISO(active_from));
-  const toDate = active_to ? new Date(convertToISO(active_to)) : null;
-
-  if (toDate) {
-    return currentDate >= fromDate && currentDate <= toDate;
-  } else {
-    return currentDate >= fromDate;
-  }
-};
 ---
 
 <div class="promotionsGrid__container">
@@ -38,16 +23,10 @@ const isPromotionActive = (active_from: string, active_to: string) => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <Image src={promotion?.image} alt="Promocion" width="200" height="200" />
+          <Image src={promotion?.imgUrl} alt="Promocion" width="200" height="200" />
           <div class="promotion__text">
             <h3>{promotion?.title}</h3>
-            <div
-              class={`badge ${isPromotionActive(promotion.active_from, promotion.active_to) ? "active" : "inactive"}`}
-            >
-              {isPromotionActive(promotion.active_from, promotion.active_to)
-                ? "Vigente"
-                : "No vigente"}
-            </div>
+            
           </div>
         </a>
       ))
