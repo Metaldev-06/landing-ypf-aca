@@ -3,32 +3,34 @@ import Image from "astro/components/Image.astro";
 
 import type { PromotionData } from "../models/promotion.interfaces";
 
-
 interface Props {
   promotionsData: PromotionData[];
 }
 
 const { promotionsData } = Astro.props;
-
-
 ---
 
 <div class="promotionsGrid__container">
   <div class="cards__container">
     {
       promotionsData.map((promotion) => (
-        <a
-          href={promotion?.url}
-          class="promotion__card"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image src={promotion?.imgUrl} alt="Promocion" width="200" height="200" />
+        <div class="promotion__card" style={`background-color: ${promotion?.color}`}>
           <div class="promotion__text">
-            <h3>{promotion?.title}</h3>
+            <div class="promotion__percent">{promotion?.percent}</div>
             
+            <h3 class="promotion__title">{promotion?.title}</h3>
+            
+            <p class="promotion__description">{promotion?.description}</p>
+            
+            <span class="promotion__badge">{promotion?.badge}</span>
+
+            <span class="promotion__date">{promotion?.date}</span>
           </div>
-        </a>
+
+          <div class="promotion__image">
+            <img src={promotion?.image} alt={promotion?.title} loading="lazy" />
+          </div>
+        </div>
       ))
     }
   </div>
@@ -55,58 +57,81 @@ const { promotionsData } = Astro.props;
       .promotion__card {
         position: relative;
         width: 100%;
-        height: 350px;
+        // height: 350px;
         color: white;
         border-radius: 8px;
-        overflow: hidden;
         background-color: #202020;
         transition: all 0.3s;
-
-        img {
-          width: 100%;
-          height: 220px;
-          object-fit: cover;
-        }
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        text-align: center;
+        margin-top: 3rem;
 
         .promotion__text {
-          width: 100%;
-          padding: 1rem;
-          height: 120px;
+          min-height: 211px;
+          padding: .5rem;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          align-items: flex-start;
-          gap: 1rem;
+          align-items: center;
+          text-align: center;
+          gap: .5rem;
         }
 
-        h3 {
-          font-size: clamp(0.5rem, 3vw, 1rem);
+        .promotion__percent {
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translate(-50%, -50%);
           font-weight: bold;
+          background-color: #0f38e8;
+          padding: 1rem;
+          font-size: 3rem;
+          border-radius: 8px;
+          z-index: 1;
+          font-weight: bold;
+        }
+
+        .promotion__title {
+          font-size: clamp(0.5rem, 3vw, 1.7rem);
+          padding-top: 3rem;
+        }
+
+        .promotion__description {
+          font-size: clamp(0.5rem, 3vw, .9rem);
+        }
+
+        .promotion__badge {
+          font-size: clamp(0.5rem, 3vw, .8rem);
+          outline: 1px solid white;
+          padding: 0.4rem .9rem;
+          border-radius: 4px;
+        }
+
+        .promotion__date {
+          font-size: clamp(0.5rem, 3vw, .8rem);
+        }
+
+        .promotion__image {
+          width: 100%;
+          height: 70px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: aliceblue;
+          border-radius: 0 0  8px 8px;
+
+          img {
+            width: 100px;
+            height: 100%;
+            mix-blend-mode: multiply;
+          }
         }
 
         &:hover {
           background-color: #2a2b2b;
-        }
-
-        .badge {
-          // position: absolute;
-          // top: 10px;
-          // left: 10px;
-          display: inline-block;
-          padding: 0.5rem 1rem;
-          border-radius: 5px;
-          font-size: 0.8rem;
-          font-weight: bold;
-        }
-
-        .badge.active {
-          background-color: #28a745;
-          color: #fff;
-        }
-
-        .badge.inactive {
-          background-color: #dc3545;
-          color: #fff;
         }
       }
     }

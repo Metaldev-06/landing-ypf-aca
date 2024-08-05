@@ -17,9 +17,14 @@ const Oils = defineTable({
 const Promotions = defineTable({
   columns: {
     id: column.number({ primaryKey: true }),
-    title: column.text({ unique: true, optional: false }),
-    url: column.text({ optional: false }),
-    imgUrl: column.text({ optional: false }),
+    title: column.text({ optional: false }),
+    description: column.text({ optional: false }),
+    badge: column.text({ optional: true }),
+    day: column.text({ optional: false }),
+    date: column.text({ optional: true }),
+    percent: column.text({ optional: false }),
+    image: column.text({ optional: false }),
+    color: column.text({ optional: false }),
   },
 });
 

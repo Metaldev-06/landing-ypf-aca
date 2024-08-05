@@ -8,6 +8,11 @@
 // }
 export interface PromotionData {
   title: string;
-  imgUrl: string;
-  url: string;
+  description: string;
+  badge?: string | null;
+  day: string;
+  date?: string | null;
+  percent: string;
+  image: string;
+  color: string;
 }
